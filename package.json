@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.2.7",
+    "@reduxjs/toolkit": "^2.3.0",
     "@stripe/react-stripe-js": "^2.8.0",
     "@stripe/stripe-js": "^4.3.0",
     "antd": "^5.20.2",
@@ -33,6 +33,7 @@
     "react-router": "^6.26.1",
     "react-router-dom": "^6.26.1",
     "react-toastify": "^10.0.5",
+    "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
     "redux-persist-cookie-storage": "^1.0.0",
     "swiper": "^11.1.10",
