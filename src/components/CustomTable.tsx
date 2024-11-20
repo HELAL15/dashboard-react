@@ -6,9 +6,7 @@ import { TableRowSelection } from "antd/es/table/interface";
 import { FaFileExcel } from "react-icons/fa6";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-import useFetch from "../hooks/useFetch";
 import { request } from "../api/request";
-import axios from "axios";
 
 /**
  * ==> props interface

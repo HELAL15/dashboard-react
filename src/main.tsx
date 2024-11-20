@@ -4,8 +4,8 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
-import { Provider, useSelector } from 'react-redux'
-import { persistor, RootState, store } from './redux/store.ts'
+import { Provider } from 'react-redux'
+import { persistor, store } from './redux/store.ts'
 import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/navigation'

@@ -1,7 +1,7 @@
 import { FC, memo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { message, Spin } from "antd";
+import { Spin } from "antd";
 import SecTitle from "../../components/global/SecTitle";
 import { request } from "../../api/request";
 import { useNavigate } from "react-router";

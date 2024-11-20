@@ -1,8 +1,6 @@
 import { FC, memo, useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Upload from "../global/Upload";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
 import useFetch from "../../hooks/useFetch";
 import usePostRequest from "../../hooks/usePost";
 import { useTranslation } from "react-i18next";
@@ -50,7 +48,7 @@ const MainSettings: FC<IProps> = ({}) => {
 
   const lang = i18n.language
 
-  const { data , isLoading } = useFetch("https://backend.smartvision4p.com/hotel/public/api/rooms", [lang]);
+  const { data  } = useFetch("https://backend.smartvision4p.com/hotel/public/api/rooms", [lang]);
 
   useEffect(() => {
     if (data) {
