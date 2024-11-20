@@ -5,7 +5,6 @@ import { store } from '../redux/store';
 import NProgress from 'nprogress';
 import { setLoading } from '../redux/features/PageLoadingSlice';
 import { removeUser } from '../redux/features/UserSlice';
-import { removeAllTokens } from '../helpers/Utils';
 
 
 // Initial language from localStorage or default to 'en'

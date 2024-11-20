@@ -20,15 +20,6 @@ import { useTranslation } from 'react-i18next'
 
 
 
-
-// const lang = localStorage.getItem("i18nextLng")
-
-// const direction = lang  === 'ar' ? "rtl" : "ltr"
-
-// const lang1 = useSelector((state:RootState) => state.lang.value);
-
-// console.log(lang1);
-
 const MainApp = () => {
   const {i18n} = useTranslation()
   const lang = i18n.language

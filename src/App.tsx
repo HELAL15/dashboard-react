@@ -14,7 +14,6 @@ import Categories from "./pages/categories/Categories";
 import AddCategory from "./pages/categories/AddCategory";
 import UpdateCateogry from "./pages/categories/UpdateCateogry";
 import CategoryDetails from "./pages/categories/CategoryDetails";
-import RouterProgress from "./RouterProgress";
 import SubCategories from "./pages/subCategories/SubCategories";
 
 

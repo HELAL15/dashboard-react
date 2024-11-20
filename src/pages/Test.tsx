@@ -1,6 +1,5 @@
 import { FC, memo, useState } from "react";
 import { Table } from 'antd';
-import type { TableColumnsType } from 'antd';
 import { TableRowSelection } from "antd/es/table/interface";
 import { Link } from "react-router-dom";
 import { IoEye, IoPencil, IoTrash } from "react-icons/io5";

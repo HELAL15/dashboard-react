@@ -8,11 +8,7 @@ interface UsePostRequestResult<T> {
   error: string | null;
   postData: (payload: any, config?: AxiosRequestConfig) => Promise<void>;
 }
-const config = {
-  headers: {
-    'Content-Type': 'multipart/form-data',
-  },
-};
+
 const usePostRequest = <T,>(url: string): UsePostRequestResult<T> => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);

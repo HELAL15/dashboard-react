@@ -2,7 +2,6 @@ import { FC, memo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {  TableColumnsType } from "antd";
 import SecTitle from "../../components/global/SecTitle";
-import { useTranslation } from "react-i18next";
 import CustomTable from "../../components/CustomTable";
 import useFetch from "../../hooks/useFetch";
 
@@ -16,8 +15,8 @@ interface IProps {}
  */
 const SubCategories: FC<IProps> = () => {
 
-  const {i18n} = useTranslation()
-  const lang = i18n.language
+  // const {i18n} = useTranslation()
+  // const lang = i18n.language
 
 
   const location = useLocation();

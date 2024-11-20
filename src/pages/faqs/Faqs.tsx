@@ -1,9 +1,7 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { TableColumnsType } from "antd";
 import SecTitle from "../../components/global/SecTitle";
-import CustomTable from "../../components/CustomTable";
-import { useTranslation } from "react-i18next";
+
 
 /**
  * ==> props interface
@@ -17,32 +15,32 @@ const Faqs: FC<IProps> = () => {
 
 
 
-  const columns: TableColumnsType = [
+  // const columns: TableColumnsType = [
 
-    {
-      title: "Question",
-      dataIndex: "question",
-      align: "center",
-      responsive: ["xs", "sm", "md", "lg"],
-    },
-    {
-      title: "Answer",
-      dataIndex: "answer",
-      align: "center",
-      responsive: ["xs", "sm", "md", "lg"],
-    },
+  //   {
+  //     title: "Question",
+  //     dataIndex: "question",
+  //     align: "center",
+  //     responsive: ["xs", "sm", "md", "lg"],
+  //   },
+  //   {
+  //     title: "Answer",
+  //     dataIndex: "answer",
+  //     align: "center",
+  //     responsive: ["xs", "sm", "md", "lg"],
+  //   },
 
-  ];
-
-
-  const {i18n} = useTranslation()
-  const lang = i18n.language
+  // ];
 
 
-  const dataNames = {
-    question: `question_${lang}`,
-    answer: `answer${lang}`,
-  }
+  // const {i18n} = useTranslation()
+  // const lang = i18n.language
+
+
+  // const dataNames = {
+  //   question: `question_${lang}`,
+  //   answer: `answer${lang}`,
+  // }
  
   return (
     <section>
@@ -53,7 +51,7 @@ const Faqs: FC<IProps> = () => {
             Add FAQ
           </Link>
         </div>
-        <CustomTable  getDataEndPoint="faqs" deleteEndPoint="faqs" cols={columns}  />
+        {/* <CustomTable  deleteEndPoint="faqs" cols={columns}  /> */}
       </div>
     </section>
   );

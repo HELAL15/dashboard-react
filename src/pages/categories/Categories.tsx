@@ -1,14 +1,8 @@
-import { FC, memo, useState } from "react";
+import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import { Modal, Table, TableColumnsType } from "antd";
-import { IoEye, IoPencil, IoTrash } from "react-icons/io5";
+import { TableColumnsType } from "antd";
 import useFetch from "../../hooks/useFetch";
 import SecTitle from "../../components/global/SecTitle";
-import { TableRowSelection } from "antd/es/table/interface";
-import { FaFileExcel } from "react-icons/fa6";
-import { useTranslation } from "react-i18next";
-import { request } from "../../api/request";
-import { toast } from "react-toastify";
 import CustomTable from "../../components/CustomTable";
 
 /**
@@ -21,8 +15,8 @@ interface IProps {}
  */
 const Categories: FC<IProps> = () => {
 
-  const {i18n} = useTranslation()
-  const lang = i18n.language
+  // const {i18n} = useTranslation()
+  // const lang = i18n.language
 
   const { data, isLoading, refetch } = useFetch(`categorys?page=${1}` );
 
