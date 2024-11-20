@@ -1,0 +1,92 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Stylish Handbag",
+      "image": "https://cdn.pixabay.com/photo/2016/03/27/22/16/woman-1284377_960_720.jpg",
+      "price": 260,
+      "originalPrice": 290,
+      "rating": 4,
+      "reviews": 65,
+      "isFav": false,
+      "inCart": false
+    },
+    {
+      "id": 2,
+      "name": "Leather Backpack",
+      "image": "https://cdn.pixabay.com/photo/2018/04/26/16/31/bag-3358419_960_720.jpg",
+      "price": 320,
+      "originalPrice": 350,
+      "rating": 5,
+      "reviews": 120,
+      "isFav": true,
+      "inCart": false
+    },
+    {
+      "id": 3,
+      "name": "Sporty Duffel Bag",
+      "image": "https://cdn.pixabay.com/photo/2016/03/27/20/12/duffle-1284074_960_720.jpg",
+      "price": 150,
+      "originalPrice": 180,
+      "rating": 3,
+      "reviews": 45,
+      "isFav": false,
+      "inCart": true
+    },
+    {
+      "id": 4,
+      "name": "Elegant Clutch",
+      "image": "https://cdn.pixabay.com/photo/2017/10/14/16/16/handbag-2854170_960_720.jpg",
+      "price": 90,
+      "originalPrice": 110,
+      "rating": 2,
+      "reviews": 30,
+      "isFav": false,
+      "inCart": false
+    },
+    {
+      "id": 5,
+      "name": "Stylish Handbag",
+      "image": "https://cdn.pixabay.com/photo/2016/03/27/22/16/woman-1284377_960_720.jpg",
+      "price": 260,
+      "originalPrice": 290,
+      "rating": 4,
+      "reviews": 65,
+      "isFav": false,
+      "inCart": false
+    },
+    {
+      "id": 6,
+      "name": "Leather Backpack",
+      "image": "https://cdn.pixabay.com/photo/2018/04/26/16/31/bag-3358419_960_720.jpg",
+      "price": 320,
+      "originalPrice": 350,
+      "rating": 5,
+      "reviews": 120,
+      "isFav": true,
+      "inCart": false
+    },
+    {
+      "id": 7,
+      "name": "Sporty Duffel Bag",
+      "image": "https://cdn.pixabay.com/photo/2016/03/27/20/12/duffle-1284074_960_720.jpg",
+      "price": 150,
+      "originalPrice": 180,
+      "rating": 3,
+      "reviews": 45,
+      "isFav": false,
+      "inCart": true
+    },
+    {
+      "id": 8,
+      "name": "Elegant Clutch",
+      "image": "https://cdn.pixabay.com/photo/2017/10/14/16/16/handbag-2854170_960_720.jpg",
+      "price": 90,
+      "originalPrice": 110,
+      "rating": 2,
+      "reviews": 30,
+      "isFav": false,
+      "inCart": false
+    }
+  ]
+}

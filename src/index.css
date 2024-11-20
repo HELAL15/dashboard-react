@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+  @apply bg-body;
+}
+::selection {
+  @apply bg-accent text-primary-white;
+}
+
+::-webkit-scrollbar {
+  height: 0.2rem;
+  width: 0.35rem;
+  @apply bg-primary-white;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent;
+}
+section {
+  @apply py-6;
+}
+
+.package {
+  @apply space-y-2;
+}
+
+.label {
+  @apply text-base text-black font-normal;
+}
+
+.input {
+  @apply w-full bg-body px-4 py-3 rounded outline-none border border-transparent focus:border-accent;
+}
+.ant-checkbox-indeterminate .ant-checkbox-inner:after {
+  @apply bg-accent !important;
+}
+.ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover
+  .ant-checkbox-inner,
+.ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner {
+  @apply border-accent !important;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  @apply bg-accent border-accent !important;
+}
+.ant-table-wrapper
+  .ant-table-tbody
+  .ant-table-row.ant-table-row-selected
+  > .ant-table-cell {
+  @apply bg-accent/10 !important;
+}
+.btn {
+  @apply py-3 px-9 rounded my-1 capitalize font-medium text-base;
+}
+
+.btn-primary {
+  @apply bg-accent capitalize hover:bg-accent-hover text-white;
+}
+
+.nav-link {
+  @apply text-base text-center font-normal text-black duration-300 py-3 px-3 rounded;
+}
+.nav-link:hover,
+.nav-link-mobile:hover {
+  @apply text-accent bg-accent/10;
+}
+
+.nav-link.active {
+  @apply text-accent  relative bg-accent/10;
+}
+
+.nav-link-mobile.active {
+  @apply text-accent  relative before:absolute before:bottom-0 before:w-full before:h-[1px] before:bg-black;
+}
+
+.nav-link-mobile {
+  @apply text-xl text-center font-medium text-black duration-300 pb-1;
+}
+
+.footer-link {
+  @apply text-base text-primary-white font-normal duration-300 pb-1;
+}
+.footer-link.active {
+  @apply text-accent;
+}
+
+.profile-link {
+  @apply text-base block w-fit font-normal text-gray-400 duration-300 pb-1;
+}
+.profile-link:hover {
+  @apply text-accent;
+}
+
+.profile-link.active {
+  @apply text-accent relative;
+}
+
+.swiper-pagination-bullet {
+  @apply w-3 h-3  bg-primary-white !important;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply bg-accent border border-r-2 border-primary-white !important;
+}
+
+.ant-tree-treenode:last-child {
+  margin-bottom: 0rem !important;
+}
+
+.select-lang .ant-select-selector,
+.select-lang.ant-select-open input {
+  @apply bg-transparent border-none   !important;
+}
+
+/* .select-lang .ant-select-arrow{
+  @apply text-primary-white !important;
+} */
+
+/* .select-lang.ant-select-open .ant-select-selection-item {
+  @apply text-primary-white !important; 
+} */
+
+.ant-select-item.ant-select-item-option.ant-select-item-option-selected {
+  @apply bg-accent/70 hover:bg-accent/70 text-primary-white !important;
+}
+.ant-select-item.ant-select-item-option {
+  @apply hover:bg-accent/20 !important;
+}
+
+.ant-pagination .ant-pagination-item {
+  @apply rounded !important;
+}
+
+.ant-pagination .ant-pagination-item-active {
+  @apply border-accent bg-accent !important;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  @apply text-primary-white !important;
+}
+
+.ant-collapse {
+  @apply bg-transparent border-none rounded space-y-6 !important;
+}
+
+.ant-collapse .ant-collapse-item .ant-collapse-header {
+  @apply bg-light duration-300 hover:bg-accent hover:text-primary-white hover:font-semibold font-medium text-base border-none py-5 rounded  !important;
+}
+
+.ant-collapse .ant-collapse-content {
+  @apply border-none !important;
+}
+.ant-collapse
+  .ant-collapse-item
+  .ant-collapse-item-active
+  .ant-collapse-header {
+  @apply border-none  !important;
+}
+
+.ant-collapse > .ant-collapse-item {
+  @apply border-none  !important;
+}
+
+.ant-collapse-item.ant-collapse-item-active .ant-collapse-header {
+  @apply bg-accent font-semibold text-primary-white !important;
+}
+.ant-otp {
+  @apply w-full !important;
+}
+
+.ant-otp-input {
+  @apply text-center py-3 text-xl bg-light rounded border border-transparent focus:border-accent !important;
+}
+
+.ant-menu-light.ant-menu-root.ant-menu-inline,
+.ant-menu-light > .ant-menu.ant-menu-root.ant-menu-inline,
+.ant-menu-light.ant-menu-root.ant-menu-vertical,
+.ant-menu-light > .ant-menu.ant-menu-root.ant-menu-vertical {
+  border-inline-end: none;
+}
+
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  @apply bg-accent/10;
+}
+
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  @apply text-accent;
+}
+
+.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title,
+.ant-menu-light
+  > .ant-menu
+  .ant-menu-submenu-selected
+  > .ant-menu-submenu-title {
+  @apply text-accent;
+}
+
+.ant-table-thead .ant-table-cell {
+  @apply text-white bg-accent !important;
+}
+
+.ant-tabs-nav {
+  @apply max-w-[300px] md:max-w-[500px] lg:max-w-[700px] xl:max-w-[800px] !important;
+}
+
+.ant-tabs-tab-active {
+  @apply text-accent !important;
+}
+.ant-tabs .ant-tabs-ink-bar {
+  @apply bg-accent !important;
+}
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  @apply text-accent !important;
+}
+.ant-tabs .ant-tabs-tab:hover {
+  @apply text-accent !important;
+}
+
+.error {
+  @apply text-red-600;
+}
+
+.ant-modal-root .ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+.ant-spin .ant-spin-dot-holder {
+  @apply text-accent;
+}
+
+.wrapper {
+  @apply bg-white rounded px-4 py-8 shadow-shadow;
+}

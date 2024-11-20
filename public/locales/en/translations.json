@@ -1,0 +1,63 @@
+{
+  "topHeader" : {
+    "lang" : {
+      "ar" : "arabic",
+      "en" : "english"
+    }
+  },
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about": "About Us",
+      "shop": "shop",
+      "contact": "Contact Us",
+      "login": "Login"
+    },
+    "search" : "what are you looking for?"
+  },
+  "footer": {
+    "subscribe": {
+      "title": "Subscribe to our newsletter",
+      "subtitle": "Get 10% off your first order",
+      "mail": "Enter your email"
+    },
+    "support" : "support",
+    "account": {
+      "title": "Account",
+      "links": {
+        "myAccount": "My Account",
+        "shop": "shop",
+        "wishlist": "My Wishlist",
+        "cart": "My Cart",
+        "login": "Login / Create Account"
+      }
+    },
+    "quick": {
+      "title": "Quick Links",
+      "links": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms and Conditions",
+        "faq": "FAQ",
+        "contact": "Contact Us"
+      }
+    },
+    "download" : {
+      "title" : "Download app",
+      "subtitle" : "save $3 with app new user only "
+    }
+  },
+  "breadcrumb" : {
+    "home" : "home",
+    "shop" : "shop",
+    "about" : "about us",
+    "contact" : "contact us",
+    "profile" : "my profile",
+    "address" : "address",
+    "payment-option" : "payment options",
+    "returns" : "returns",
+    "cancellation" : "cancellation",
+    "privacy" : "privacy",
+    "terms" : "terms",
+    "faq" : "FAQ"
+  }
+}
