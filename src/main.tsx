@@ -18,6 +18,7 @@ import RouterProgress from './RouterProgress.tsx'
 import { PersistGate } from 'redux-persist/integration/react'
 import { useTranslation } from 'react-i18next'
 import arEG from 'antd/locale/ar_EG';
+import enUS from 'antd/locale/en_US';
 
 
 const MainApp = () => {
@@ -30,7 +31,7 @@ const MainApp = () => {
 
  
   return (
-    <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : null }>
+    <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : enUS }>
       <RouterProgress/>
       <PersistGate loading={null} persistor={persistor} >
          <App />
