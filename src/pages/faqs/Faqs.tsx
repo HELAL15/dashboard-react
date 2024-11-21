@@ -26,12 +26,14 @@ const Faqs: FC<IProps> = () => {
       dataIndex: `question_${lang}`,
       align: "center",
       responsive: ["xs", "sm", "md", "lg"],
+      width:250
     },
     {
       title: "Answer",
       dataIndex: `answer_${lang}`,
       align: "center",
       responsive: ["xs", "sm", "md", "lg"],
+      width:350
     },
 
   ];

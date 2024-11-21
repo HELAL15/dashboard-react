@@ -31,7 +31,6 @@ type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
   { key: '/', icon: <FaHome /> , label: <NavLink to="/">home</NavLink> },
   { key: '/settings', icon: <IoMdSettings /> , label: <NavLink to="/settings">settings</NavLink> },
-  { key: '/test', icon: <ContainerOutlined />, label: <NavLink to="/test">test</NavLink> },
   {
     key: 'sub1',
     label: 'admins',
@@ -79,9 +78,6 @@ const items: MenuItem[] = [
     ],
   },
   { key: '/orders', icon: <ContainerOutlined />, label: <NavLink to="/orders">orders</NavLink> },
-  { key: '/orders', icon: <ContainerOutlined />, label: <NavLink to="/orders">orders</NavLink> },
-  { key: '/orders', icon: <ContainerOutlined />, label: <NavLink to="/orders">orders</NavLink> },
-  { key: '/admin/login', icon: <ContainerOutlined />, label: <NavLink to="/admin/login">login</NavLink> },
 ];
 
 const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {

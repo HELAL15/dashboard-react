@@ -33,6 +33,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
       dataIndex: "rowNumber",
       align: "center",
       render: (_: any, __: any, index: number) => (currentPage - 1) * pageSize + index + 1,
+      fixed:'left'
     },
     ...cols,
     {
@@ -42,7 +43,8 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
       responsive: ["xs", "sm", "md", "lg"],
       render: (id:any)=> (
         <ActionButtons id={id} showModal={showModal} />
-      )
+      ),
+      fixed:'right'
     },
 
   ];
@@ -124,10 +126,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
 
   return (
     <>
-    <section>
-      
-      <div className="container">
-
+    <div className="overflow-auto flex-grow  ">
         <div className="flex items-center justify-between mb-4">
           {hasSelected ? 
           <>
@@ -142,6 +141,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
            : null}
         </div>
           <Table 
+          size="middle"
           bordered
           loading={{
             spinning: isLoading,
@@ -167,8 +167,8 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
         >
           <p>{modalText}</p>
         </Modal>
-      </div>
-    </section>
+
+    </div>
       </>
   );
 };

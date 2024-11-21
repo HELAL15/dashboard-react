@@ -33,9 +33,9 @@ const Layouts: FC<IProps> = ({  }) => {
     <> 
     <div className="flex">
       <Aside collapsed={collapsed} close={close} setClose={setClose} toggleClose={toggleClose} setCollapsed={setCollapsed} toggleCollapsed={toggleCollapsed} />
-      <div className="flex-grow overflow-auto">
+      <div className="flex-grow overflow-x-auto relative">
         <Header  collapsed={collapsed} toggleCollapsed={toggleCollapsed}  toggleClose={toggleClose} />
-        <main className="overflow-auto">
+        <main>
           <Outlet/>
         </main>
         <Footer/>

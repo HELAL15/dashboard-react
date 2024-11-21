@@ -1,10 +1,11 @@
-import { FC, memo, useState } from "react";
+import { FC, memo, useEffect, useState } from "react";
 import SecTitle from "../../components/global/SecTitle";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { request } from "../../api/request";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Spin } from "antd";
+import useFetch from "../../hooks/useFetch";
 
 /**
  * ==> props interface
@@ -23,14 +24,29 @@ interface IFormInput {
 /**
  * ==> Component
  */
-const AddFaqs: FC<IProps> = ({  }) => {
+const UpdateFaq: FC<IProps> = ({  }) => {
 
 
   const [loading , setLoading] = useState<boolean>(false);
 
   const navigate = useNavigate()
+  const {id} = useParams()
 
-  const { register, handleSubmit, formState: { errors } , reset } = useForm<IFormInput>();
+  const { register, handleSubmit, formState: { errors } , setValue , reset } = useForm<IFormInput>();
+
+
+  const {data , isLoading:load } = useFetch(`admin/faqs/${id}`)
+
+const oldData = data?.data;
+
+useEffect(() => {
+  if (oldData) {
+    setValue("question_ar", oldData.question_ar);
+    setValue("question_en", oldData.question_en);
+    setValue("answer_ar", oldData.answer_ar);
+    setValue("answer_en", oldData.answer_en);
+  }
+}, [data]);
 
 
   const onSubmit = async (data: IFormInput) => {
@@ -41,14 +57,10 @@ const AddFaqs: FC<IProps> = ({  }) => {
       formData.append("question_ar", data.question_ar);
       formData.append("answer_en", data.answer_en);
       formData.append("answer_ar", data.answer_ar);
-
+      formData.append("_method", 'PUT');
 
       setLoading(true)
-      const res = await request.post('admin/faqs', formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        }
-      });
+      const res = await request.post(`admin/faqs/${id}`, formData);
       setLoading(false)
       navigate('/faqs')
       reset()
@@ -71,7 +83,7 @@ const AddFaqs: FC<IProps> = ({  }) => {
       <div className="container">
         <SecTitle title="add FAQ page" />
         <div className="wrapper">
-          <Spin spinning={loading} size="large" >
+          <Spin spinning={loading || load} size="large" >
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2 gap-4 ">
                 <div className="package">
@@ -137,4 +149,4 @@ const AddFaqs: FC<IProps> = ({  }) => {
   );
 }
 
-export default memo(AddFaqs);
+export default memo(UpdateFaq);

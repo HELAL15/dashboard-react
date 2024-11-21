@@ -18,6 +18,8 @@ import SubCategories from "./pages/subCategories/SubCategories";
 import { useDispatch } from "react-redux";
 import { fetchSettingsAsync } from "./redux/features/SettingSlice";
 import FAQDetails from "./pages/faqs/FAQDetails";
+import UpdateFaq from "./pages/faqs/UpdateFaq";
+import { AppDispatch } from "./redux/store";
 
 
 
@@ -28,7 +30,7 @@ function App() {
   },[location.key])
 
 
-  const dispatch = useDispatch();
+  const dispatch : AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchSettingsAsync()); 
@@ -61,12 +63,13 @@ function App() {
           <Route path="/faqs" element={<Faqs/>} />
           <Route path="faqs/add-faq" element={<AddFaqs/>}/>
           <Route path="faqs/view/:id" element={<FAQDetails/>}/>
+          <Route path="faqs/edit/:id" element={<UpdateFaq/>}/>
       
         </Route>
       
       </Route>
       <Route element={<RequireBack/>} >
-      <Route path="/admin/login" element={<Login/>} />
+        <Route path="/admin/login" element={<Login/>} />
       </Route>
         {/* not found page  */}
         <Route path="*" element={<NotFound/>} />

@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Select } from "antd";
+import { Select, Tooltip } from "antd";
 import i18next from "i18next";
 // import { useTranslation } from "react-i18next";
 import {
@@ -54,7 +54,7 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
   return (
     <>
 
-      <header className="py-3 sticky top-0   z-20">
+      <header className="py-3 sticky top-0 z-20">
         <div className="container  ">
           <div className="flex items-center justify-between py-6 px-4 md:px-6 bg-primary-white rounded shadow-shadow">
             <div className="flex items-center gap-4 ">
@@ -66,10 +66,12 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
               {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             </button>
             }
+            <Tooltip placement="bottom" title='visit shop' >
               <Link to='https://exclusive15.vercel.app/' target="_blank" className="flex items-center gap-2">
                 <FaShop />
-                <span className="text-sm">shop</span>
+                {/* <span className="text-sm">shop</span> */}
               </Link>
+            </Tooltip>
             </div>
             <div className="flex items-center gap-1 md:gap-4">
                 <Select
