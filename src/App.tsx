@@ -15,6 +15,9 @@ import AddCategory from "./pages/categories/AddCategory";
 import UpdateCateogry from "./pages/categories/UpdateCateogry";
 import CategoryDetails from "./pages/categories/CategoryDetails";
 import SubCategories from "./pages/subCategories/SubCategories";
+import { useDispatch } from "react-redux";
+import { fetchSettingsAsync } from "./redux/features/SettingSlice";
+import FAQDetails from "./pages/faqs/FAQDetails";
 
 
 
@@ -25,6 +28,11 @@ function App() {
   },[location.key])
 
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSettingsAsync()); 
+  }, [dispatch]);
 
   return (
     <Routes>
@@ -52,6 +60,7 @@ function App() {
           {/* faqs page */}
           <Route path="/faqs" element={<Faqs/>} />
           <Route path="faqs/add-faq" element={<AddFaqs/>}/>
+          <Route path="faqs/view/:id" element={<FAQDetails/>}/>
       
         </Route>
       

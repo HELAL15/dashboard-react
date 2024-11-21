@@ -1,54 +1,90 @@
 import { FC, memo, useState } from "react";
-import { Link } from "react-router-dom";
 import { Modal, Table, TableColumnsType } from "antd";
-import { IoEye, IoPencil, IoTrash } from "react-icons/io5";
 import { TableRowSelection } from "antd/es/table/interface";
-import { FaFileExcel } from "react-icons/fa6";
-import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
+import { FaFileExcel } from "react-icons/fa6";
+import useFetch from "../hooks/useFetch";
+import ActionButtons from "./ActionButtons";
 import { request } from "../api/request";
+
 
 /**
  * ==> props interface
  */
 interface IProps {
-  // getDataEndPoint: string;
-  deleteEndPoint: string;
-  cols: TableColumnsType;
-  data:any;
-  isLoading:boolean;
-  refetch:()=>void
+  cols?:any,
+  endPoint?:string
 }
 
 /**
  * ==> Component
  */
-const CustomTable: FC<IProps> = ({  data , isLoading , refetch , deleteEndPoint , cols  }) => {
+const CustomTable: FC<IProps> = ({cols , endPoint }) => {
+
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
-
-  const {i18n} = useTranslation()
-  const lang = i18n.language
-  // Fetch data based on the current page
+  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}` );
 
 
-const columns: TableColumnsType = [
-  {
-    title: "#", 
-    dataIndex: "rowNumber",
-    align: "center",
-    render: (_: any, __: any, index: number) => (currentPage - 1) * pageSize + index + 1,
-  },
+  
+  const columns: TableColumnsType = [
+    {
+      title: "#", 
+      dataIndex: "rowNumber",
+      align: "center",
+      render: (_: any, __: any, index: number) => (currentPage - 1) * pageSize + index + 1,
+    },
     ...cols,
     {
       title: "action",
       dataIndex: "action",
       align: "center",
       responsive: ["xs", "sm", "md", "lg"],
+      render: (id:any)=> (
+        <ActionButtons id={id} showModal={showModal} />
+      )
     },
-]
+
+  ];
+
+  const source = data?.data?.data?.map((item: any) => {
+    const dynamicFields = cols.reduce((acc: any, col: any) => {
+      if (col.dataIndex) {
+        acc[col.dataIndex] = item[col.dataIndex];
+      }
+      return acc;
+    }, {});
+  
+    return {
+      key: item.id,
+      ...dynamicFields,
+      action: item.id,
+    };
+  });
+
+  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
+  const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
+    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
+    setSelectedRowKeys(newSelectedRowKeys);
+  };
+  const rowSelection: TableRowSelection = {
+    selectedRowKeys,
+    onChange: onSelectChange,
+  };
+
+  const hasSelected = selectedRowKeys.length > 0;
 
 
+    // Pagination handler
+    const handlePaginationChange = (page: number) => {
+      setCurrentPage(page);
+      refetch(); 
+      window.scrollTo({top:0, left:0 , behavior:"smooth"})
+    };
+
+
+
+    
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [modalText, setModalText] = useState('');
@@ -65,7 +101,7 @@ const columns: TableColumnsType = [
   const handleOk = async () => {
     setConfirmLoading(true);
     try{
-      const res = await request.delete(`/admin/${deleteEndPoint}/${id}`)
+      const res = await request.delete(`/admin/${endPoint}/${id}`)
       console.log(res);
       toast.success(res.data.message)
       refetch()
@@ -86,72 +122,13 @@ const columns: TableColumnsType = [
     setOpen(false);
   };
 
-  // Transform the fetched data into the table's data source
-  const source = data?.data?.data?.map((item: any) => ({
-    key: item.id,
-
-    question: item[`question_${lang}`] || '',
-    answer: item[`answer_${lang}`] || '',
-    title: item[`title_${lang}`] || '',
-    parentTitle: item[`parent_title_${lang}`] || '',
-    viewSubCategorys: <Link className="btn block w-fit mx-auto text-accent hover:text-accent duration-300 hover:bg-accent/30 outline-accent hover:outline outline outline-1 hover:outline-1" to={`/sub-categories?parent_id=${item.id}`} > view sub category </Link> ,
-    image: <img className="w-[120px] mx-auto aspect-video object-contain " src={item[`category_image`]} alt="" /> || '',
-    
-    action: (
-      <div className="flex items-center justify-center gap-2 flex-wrap">
-        <div className="modal">
-          <button title="delete" className="rounded px-4 py-3 btn-primary" onClick={()=>showModal(item.id)}>
-            <IoTrash />
-          </button>
-
-        </div>
-        <Link title="edit" to={`edit/${item.id}`} className="rounded px-4 py-3 text-white duration-300 hover:bg-yellow-500 bg-yellow-400">
-          <IoPencil className="text-white" />
-        </Link>
-        <Link title="view" to={`view/${item.id}`} className="rounded px-4 py-3 bg-primary/80 duration-300 hover:bg-primary ">
-          <IoEye className="text-white" />
-        </Link>
-      </div>
-    ),
-  }));
-
-  // Pagination handler
-  const handlePaginationChange = (page: number) => {
-    setCurrentPage(page);
-    refetch(); 
-    window.scrollTo({top:0, left:0 , behavior:"smooth"})
-  };
-
-
-  // handle row selection
-  const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
-    console.log('selectedRowKeys changed: ', newSelectedRowKeys);
-    setSelectedRowKeys(newSelectedRowKeys);
-  };
-  const rowSelection: TableRowSelection = {
-    selectedRowKeys,
-    onChange: onSelectChange,
-  };
-
-  const hasSelected = selectedRowKeys.length > 0;
-
-  const handleRefresh = async () => {
-    try{
-      const res = await request.get('user/refresh')
-      console.log(res);
-      
-    }catch(err){
-      console.log(err);
-    }
-  }
-
-
-
   return (
     <>
-    <button onClick={handleRefresh} >click me</button>
-<div className="flex items-center justify-between mb-4">
+    <section>
+      
+      <div className="container">
+
+        <div className="flex items-center justify-between mb-4">
           {hasSelected ? 
           <>
             <p>Selected {selectedRowKeys.length} items</p>
@@ -164,26 +141,24 @@ const columns: TableColumnsType = [
           </>
            : null}
         </div>
-        <div className="overflow-auto max-sm:max-w-[350px] ">
-
-        <Table
+          <Table 
+          bordered
           loading={{
             spinning: isLoading,
             size: "large", 
           }}
+          dataSource={source}
           rowSelection={rowSelection}
           columns={columns}
-          dataSource={source}
           pagination={{
             current: currentPage,
             pageSize,
             total: data?.data?.meta?.total,
             onChange: handlePaginationChange,
           }}
-        />
-
-        </div>
-          <Modal
+          scroll={{ x: 'max-content' }}
+           />
+           <Modal
           title="Title"
           open={open}
           onOk={handleOk}
@@ -192,8 +167,10 @@ const columns: TableColumnsType = [
         >
           <p>{modalText}</p>
         </Modal>
-    </>
+      </div>
+    </section>
+      </>
   );
-}
+};
 
 export default memo(CustomTable);

@@ -94,10 +94,14 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
   }, [location , isMobileOrTablet]);
 
 
+  
+  const {setting} = useSelector((state:RootState)=>state.setting)
+  const {
+    site_name:siteName 
+  } = setting
+  
+  
   const user = useSelector((state:RootState)=>state.user.data)
-
-  console.log(user);
-
   const {
     name,
     photo_profile:avatar
@@ -108,10 +112,10 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
     <aside className={` flex flex-col pb-5 fixed lg:sticky overflow-hidden top-0 ${close ? "inset-x-0" : "inset-x-[-100%]"} lg:inset-x-0 shadow-shadow h-screen z-50 bg-white duration-300 w-[95%] md:w-[40%] ${collapsed ? 'lg:w-fit ' : 'lg:w-[20%]'} flex-shrink-0`}>
       <div className="logo font-bold text-2xl py-2 md:py-4 px-3 mt-1 border-b border-b-slate-200 flex items-center justify-between">
         <Link to="/" className="lg:mx-auto text-accent">
-          {/* <h1 className={collapsed ? "text-sm" : "text-xl font-bold"}>exclusive</h1> */}
-          <img 
+          <h1 className={collapsed ? " text-xs " : "text-xl font-bold"}>{siteName}</h1>
+          {/* <img 
           src={"https://trello.com/1/cards/65ba872e35db8e7e4c01f5c7/attachments/6627f8e0fc82bf3f27e64cb5/previews/6627f8e1fc82bf3f27e64d92/download/logo.png"} 
-          alt="" className={`${collapsed ? 'w-[50px]' : 'w-[150px]' }  h-[45px] object-contain`} />
+          alt="" className={`${collapsed ? 'w-[50px]' : 'w-[150px]' }  h-[45px] object-contain`} /> */}
         </Link>
         <button onClick={toggleClose} className="block lg:hidden">
           <IoClose />
@@ -124,6 +128,7 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
           theme="light"
           inlineCollapsed={collapsed}
           items={items}
+          className="w-full"
         />
       </nav>
         <NavLink to="profile" className='flex items-center justify-center gap-2 mt-6  '>

@@ -10,8 +10,7 @@ import {
 import { FaShop } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
-import { useDispatch } from "react-redux";
-import { changeLang } from "../redux/features/langSlice";
+import { useTranslation } from "react-i18next";
 /**
  * ==> props interface
  */
@@ -32,17 +31,20 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const dispatch = useDispatch()
 
 
   const {Option} = Select
 
+  const {i18n} = useTranslation()
+
   const handleOptionChange = (value: any) => {
     i18next.changeLanguage(value);
+    i18n.changeLanguage(value)
     // window.location.reload();
     navigate(location.pathname , {replace: true})
     console.log(`selected ${value}`)
-    dispatch(changeLang(value))
+   
+
   }
 
   // const lang = i18next.language

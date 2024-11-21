@@ -52,7 +52,6 @@ const MainSettings: FC<IProps> = ({}) => {
 
   useEffect(() => {
     if (data) {
-      console.log(data?.data?.data[0].title);
       
       // Set form values from fetched data
       setValue("siteNameAr", data?.data?.data[0].title || "");
@@ -74,7 +73,7 @@ const MainSettings: FC<IProps> = ({}) => {
   };
 
 
-  const {postData , error , loading} = usePostRequest("https://backend.smartvision4p.com/hotel/public/api/rooms")
+  const {postData } = usePostRequest("https://backend.smartvision4p.com/hotel/public/api/rooms")
 
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
@@ -97,10 +96,7 @@ const MainSettings: FC<IProps> = ({}) => {
 
   };
 
-  console.log(error);
   
-
-  if (loading) return <p>Loading...</p>;
 
   return (
     <section>

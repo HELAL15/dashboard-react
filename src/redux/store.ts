@@ -18,7 +18,10 @@ const customCookieStorage = {
     return Promise.resolve(Cookies.get(key) || null);  // Use js-cookie's get method
   },
   setItem: (key: string, value: string) => {
-    Cookies.set(key, value);  // Use js-cookie's set method
+    Cookies.set(key, value,{
+      secure: true, 
+      sameSite: 'strict',
+    });  // Use js-cookie's set method
     return Promise.resolve();
   },
   removeItem: (key: string) => {

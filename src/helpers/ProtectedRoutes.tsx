@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Navigate, Outlet } from "react-router";
+import { FC, useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router";
 import { RootState } from "../redux/store";
-import { useSelector } from "react-redux";
-import { getToken } from "./Utils";
+import {  useSelector } from "react-redux";
+import { getToken, isTokenExpired, removeAllTokens } from "./Utils";
 
 /**
  * ==> props interface
@@ -22,13 +22,30 @@ const ProtectedRoutes: FC<IProps> = ({  }) => {
 
   const { isAuthenticated } = user
 
+  const navigate = useNavigate()
+
+ 
+  
+
+  const isMyTokenExpired = isTokenExpired(token)
+  
+  useEffect(()=>{
+    if (token) {
+      if (isMyTokenExpired) {
+        removeAllTokens()
+        setTimeout(() => {
+          navigate('/admin/login');
+        }, 0);
+      }
+    }
+  },[ navigate , token])
+
+
   return (
     <>
-
       {
         isAuthenticated && token ? <Outlet/> : <Navigate to={'/admin/login'} replace  />
       }
-
     </>
   );
 }

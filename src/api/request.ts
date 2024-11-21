@@ -36,18 +36,17 @@ request.interceptors.request.use(
 
       if (lang) {
         config.headers["Accept-Language"] = lang;
+        config.headers["Lang"] = lang;
       }
 
       return config;
     } catch (error) {
-      console.error("Error in request interceptor:", error);
       return Promise.reject(error);
     }
   },
   (error) => {
     store.dispatch(setLoading(false));
     NProgress.done();
-    console.error("Error in request interceptor:", error);
     return Promise.reject({
       message: "Error in request interceptor",
       error,

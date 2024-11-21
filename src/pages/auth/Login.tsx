@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import { request } from "../../api/request";
 import { Spin } from "antd";
 import { setToken } from "../../helpers/Utils";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/features/UserSlice";
+import { RootState } from "../../redux/store";
+import { jwtDecode } from "jwt-decode";
 
 /**
  * ==> Form data interface
@@ -28,6 +30,12 @@ const Login: FC = () => {
   } = useForm<IFormInput>();
 
 
+  const {setting} = useSelector((state:RootState)=>state.setting)
+  const {
+    site_name:siteName 
+  } = setting
+
+
   const [loading , setLoading] = useState(false)
 
 
@@ -46,7 +54,10 @@ const Login: FC = () => {
       toast.success(res.data.message)
       // handleLogin(res?.data.data)
       const token = res.data.data.token
-      setToken("accessTokenAdmin",token )
+      const decoded: any = jwtDecode(token);
+      const remainingTimeInSeconds = decoded.exp - Math.floor(Date.now() / 1000);
+      const remainingTimeInMinutes = Math.floor(remainingTimeInSeconds / 60);
+      setToken("accessTokenAdmin",token , remainingTimeInMinutes )
       dispatch(setUser(res?.data.data))
       request.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       navigate('/')
@@ -60,11 +71,11 @@ const Login: FC = () => {
 
   return (
     <>
-      <section className="h-screen p-0 m-0 grid place-items-center gap-4  bg-accent/30 ">
+      <section className="h-screen p-0 m-0 grid place-items-center gap-4  bg-body ">
           <div className=" space-y-8 w-[95%] md:w-[50%] lg:w-[35%] shadow-md
             bg-primary-white py-10 px-4 rounded-md">
               <div className="space-y-2 text-center">
-                <h2 className="text-3xl font-medium text-accent">exclusive</h2>
+                <h2 className="text-3xl font-medium text-accent">{siteName}</h2>
                 <p className="text-base text-primary">admin dashboard</p>
               </div>
               <Spin spinning={loading} size="large" >
@@ -73,6 +84,7 @@ const Login: FC = () => {
                     <div className="col-span-12">
                       <input
                         type="text"
+                        autoComplete="true"
                         placeholder="enter your email"
                         className={`w-full h-[50px] border-b-2 px-4 text-primary placeholder-gray-500 focus:outline-none ${
                           errors.email
@@ -96,6 +108,7 @@ const Login: FC = () => {
                     <div className="col-span-12">
                       <input
                         type="password"
+                        autoComplete="true"
                         placeholder="Password"
                         className={`w-full h-[50px] border-b-2 px-4 text-primary placeholder-gray-500 focus:outline-none ${
                           errors.password

@@ -60,7 +60,7 @@ section {
   @apply bg-accent/10 !important;
 }
 .btn {
-  @apply py-3 px-9 rounded my-1 capitalize font-medium text-base;
+  @apply py-3 px-5 md:px-9 rounded my-1 capitalize font-medium text-base;
 }
 
 .btn-primary {
@@ -232,8 +232,13 @@ section {
   @apply text-red-600;
 }
 
-.ant-modal-root .ant-modal-mask {
-  background-color: rgba(0, 0, 0, 0.01);
+.ant-btn-primary {
+  color: #fff;
+  @apply bg-accent duration-300 hover:bg-accent-hover !important;
+  box-shadow: 0 2px 0 rgba(255, 55, 5, 0.1);
+}
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
+  @apply text-accent border-accent !important;
 }
 
 .ant-spin .ant-spin-dot-holder {

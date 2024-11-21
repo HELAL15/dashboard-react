@@ -1,5 +1,5 @@
 import { FC, memo, useState } from "react";
-import { Table } from 'antd';
+import { Table, TableColumnsType } from 'antd';
 import { TableRowSelection } from "antd/es/table/interface";
 import { Link } from "react-router-dom";
 import { IoEye, IoPencil, IoTrash } from "react-icons/io5";
@@ -16,13 +16,13 @@ interface IProps {
 /**
  * ==> Component
  */
-const Test: FC<IProps> = ({ columns }) => {
-  // const columns: TableColumnsType = [
-  //   { title: 'Name', dataIndex: 'name' , align:'center' , responsive: ['xs', 'sm', 'md', 'lg'], },
-  //   { title: 'Age', dataIndex: 'age' , align:'center' , responsive: ['xs', 'sm', 'md', 'lg'], },
-  //   { title: 'Address', dataIndex: 'address' , align:'center' ,responsive: ['xs', 'sm', 'md', 'lg'], },
-  //   { title: 'Action', dataIndex: 'action' , align:'center' , responsive: ['xs', 'sm', 'md', 'lg'], },
-  // ];
+const Test: FC<IProps> = ({ }) => {
+  const columns: TableColumnsType = [
+    { title: 'Name', dataIndex: 'name' , align:'center' , responsive: ['xs', 'sm', 'md', 'lg'], },
+    { title: 'Age', dataIndex: 'age' , align:'center' , responsive: ['xs', 'sm', 'md', 'lg'], },
+    { title: 'Address', dataIndex: 'address' , align:'center' ,responsive: ['xs', 'sm', 'md', 'lg'], },
+    { title: 'Action', dataIndex: 'action' , align:'center', render: ()=> <Link to={'/'}>ggg</Link> , responsive: ['xs', 'sm', 'md', 'lg'], },
+  ];
 
   const handleDelete = (id:number)=>{
     console.log(id);
