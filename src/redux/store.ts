@@ -5,31 +5,33 @@ import Cookies from 'js-cookie'
 import PageLoadingSlice from './features/PageLoadingSlice';
 import SettingSlice from './features/SettingSlice';
 import UserSlice from './features/UserSlice';
+import ThemeSlice from './features/ThemeSlice';
 
 
 // Combine Reducers
 const rootReducer = combineReducers({ 
   user: UserSlice,
   loading: PageLoadingSlice,
-  setting: SettingSlice
+  setting: SettingSlice,
+  theme: ThemeSlice
 });
 const customCookieStorage = {
   getItem: (key: string) => {
-    return Promise.resolve(Cookies.get(key) || null);  // Use js-cookie's get method
+    return Promise.resolve(Cookies.get(key) || null); 
   },
   setItem: (key: string, value: string) => {
     Cookies.set(key, value,{
       secure: true, 
       sameSite: 'strict',
-    });  // Use js-cookie's set method
+    }); 
     return Promise.resolve();
   },
   removeItem: (key: string) => {
-    Cookies.remove(key);  // Use js-cookie's remove method
+    Cookies.remove(key);
     return Promise.resolve();
   }
 };
-// Persist Configuration
+
 const persistConfig = {
   key: 'root',
   storage:customCookieStorage,

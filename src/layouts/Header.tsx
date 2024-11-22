@@ -1,16 +1,20 @@
 import { FC, memo } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import { Select, Tooltip } from "antd";
+import { Select, Switch, Tooltip } from "antd";
 import i18next from "i18next";
 // import { useTranslation } from "react-i18next";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
 } from '@ant-design/icons';
-import { FaShop } from "react-icons/fa6";
+import { FaShop, FaSun } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
+import { MdDarkMode } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleTheme } from "../redux/features/ThemeSlice";
+import { RootState } from "../redux/store";
 /**
  * ==> props interface
  */
@@ -51,12 +55,22 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
 
   const isMobileOrTablet = useMediaQuery({ query: '(max-width: 768px)' });
 
+
+  const dispatch = useDispatch()
+  const theme = useSelector((state:RootState)=>state.theme.value)
+console.log(theme);
+
+  const handleChangeTheme = () => {
+    dispatch(toggleTheme())
+  }
+
+
   return (
     <>
 
       <header className="py-3 sticky top-0 z-20">
         <div className="container  ">
-          <div className="flex items-center justify-between py-6 px-4 md:px-6 bg-primary-white rounded shadow-shadow">
+          <div className="flex items-center justify-between py-6 px-4 md:px-6 bg-body-secondary rounded shadow-shadow">
             <div className="flex items-center gap-4 ">
             {
               isMobileOrTablet ?  <button  onClick={toggleClose} >
@@ -87,6 +101,14 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
               <NavLink className="text-lg md:text-xl font-medium" to={'/notifications'}>
                 <IoMdNotifications />
               </NavLink>
+              <Tooltip title={'theme'} >
+                <Switch
+                  checkedChildren={<MdDarkMode className="text-lg" />}
+                  unCheckedChildren={<FaSun className="text-lg" />}
+                  defaultChecked
+                  onChange={handleChangeTheme}
+                />
+              </Tooltip>
             </div>
           </div>
         </div>

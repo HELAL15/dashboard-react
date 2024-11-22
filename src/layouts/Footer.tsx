@@ -18,7 +18,7 @@ const Footer: FC<IProps> = ({  }) => {
     <>
     <footer className="py-4 ">
       <div className="container">
-        <div className="rights text-sm flex items-center justify-between bg-white shadow-shadow py-5 px-4 rounded sticky bottom-0 ">
+        <div className="rights text-sm flex items-center justify-between bg-body-secondary shadow-shadow py-5 px-4 rounded sticky bottom-0 ">
           <p className="">Hand-crafted & Made by ENG/ AHMED HELAL</p>
           <p>COPYRIGHT © 2024</p>
         </div>

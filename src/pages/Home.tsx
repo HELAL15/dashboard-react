@@ -28,8 +28,16 @@ const Home: FC<IProps> = ({  }) => {
           <HomeCard link="products" icon={<FaShop/>} title="total products"  count={100} />
           <HomeCard link="categories" icon={<FaShop/>} title="total categories"  count={100} />
           <HomeCard link="users" icon={<FaShop/>} title="total users"  count={100} />
+          <HomeCard link="faqs" icon={<FaShop/>} title="total FAQS"  count={50} />
           <HomeCard link="admins" icon={<FaShop/>} title="total admins"  count={100} />
           <HomeCard link="orders" icon={<FaShop/>} title="total orders"  count={100} />
+          <HomeCard link="products" icon={<FaShop/>} title="total products"  count={100} />
+          <HomeCard link="categories" icon={<FaShop/>} title="total categories"  count={100} />
+          <HomeCard link="users" icon={<FaShop/>} title="total users"  count={100} />
+          <HomeCard link="faqs" icon={<FaShop/>} title="total FAQS"  count={50} />
+          <HomeCard link="admins" icon={<FaShop/>} title="total admins"  count={100} />
+          <HomeCard link="orders" icon={<FaShop/>} title="total orders"  count={100} />
+          
         </div>
       </div>
     </section>

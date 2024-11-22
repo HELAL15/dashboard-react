@@ -40,7 +40,7 @@ const Login: FC = () => {
 
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     const formData = new FormData();
@@ -71,9 +71,9 @@ const Login: FC = () => {
 
   return (
     <>
-      <section className="h-screen p-0 m-0 grid place-items-center gap-4  bg-body ">
+      <section className=" h-dvh p-0 m-0 grid place-items-center gap-4 bg-body  ">
           <div className=" space-y-8 w-[95%] md:w-[50%] lg:w-[35%] shadow-md
-            bg-primary-white py-10 px-4 rounded-md">
+            bg-body-secondary py-10 px-4 rounded-md">
               <div className="space-y-2 text-center">
                 <h2 className="text-3xl font-medium text-accent">{siteName}</h2>
                 <p className="text-base text-primary">admin dashboard</p>

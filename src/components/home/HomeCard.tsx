@@ -21,7 +21,8 @@ const HomeCard: FC<IProps> = ({ icon , title , count , link }) => {
         shadow-shadow group px-4 py-3 sm:py-5 flex-col 
         sm:flex-row text-center sm:text-start flex items-center 
         flex-wrap justify-center sm:justify-start gap-2
-         bg-white duration-300 
+         bg-body-secondary
+          duration-300 
          relative overflow-hidden
          after:absolute after:bottom-0 after:w-full after:inset-x-0 hover:after:h-full after:h-[4px] after:bg-accent 
          after:rounded after:duration-200 after:z-0

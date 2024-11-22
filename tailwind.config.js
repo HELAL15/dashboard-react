@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: 'class', 
   theme: {
     // fontFamily: {
     //   primary: '"Exo 2"',
@@ -33,14 +34,18 @@ module.exports = {
     extend: {
       maxHeight: {
         '0': '0',
-        'full': '100vh', 
+        'full': '100dvh', 
       },
 
       colors: {
-        body:'#F8F8F8',
+        body:{
+          DEFAULT: 'var(--background-color-body)',
+          secondary:'var(--primary-white-color)'
+        },
         primary: {
           DEFAULT: '#6E6B7B',
-          white: '#ffffff',
+          white: 'var(--text-color)',
+          dark:'#111C44',
         },
         
         accent: {

@@ -9,19 +9,32 @@
   scroll-behavior: smooth;
 }
 
+:root {
+  --background-color-body: #f8f8f8;
+  --text-color: #000;
+  --primary-color: #6e6b7b;
+  --primary-white-color: #fff;
+}
+
+.dark {
+  --background-color-body: #051139;
+  --text-color: #fff;
+  --primary-white-color: #111c44;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   text-transform: capitalize;
-  @apply bg-body;
+  @apply bg-body text-primary-white duration-300;
 }
 ::selection {
-  @apply bg-accent text-primary-white;
+  @apply bg-accent text-white  !important;
 }
 
 ::-webkit-scrollbar {
   height: 0.2rem;
   width: 0.35rem;
-  @apply bg-primary-white;
+  @apply bg-body-secondary;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -36,7 +49,7 @@ section {
 }
 
 .label {
-  @apply text-base text-black font-normal;
+  @apply text-base text-primary font-normal;
 }
 
 .input {
@@ -53,12 +66,7 @@ section {
 .ant-checkbox-checked .ant-checkbox-inner {
   @apply bg-accent border-accent !important;
 }
-.ant-table-wrapper
-  .ant-table-tbody
-  .ant-table-row.ant-table-row-selected
-  > .ant-table-cell {
-  @apply bg-accent/10 !important;
-}
+
 .btn {
   @apply py-3 px-5 md:px-9 rounded my-1 capitalize font-medium text-base;
 }
@@ -191,12 +199,7 @@ section {
 
 .ant-menu-light .ant-menu-item-selected,
 .ant-menu-light > .ant-menu .ant-menu-item-selected {
-  @apply bg-accent/10;
-}
-
-.ant-menu-light .ant-menu-item-selected,
-.ant-menu-light > .ant-menu .ant-menu-item-selected {
-  @apply text-accent;
+  @apply bg-accent/10 text-accent !important;
 }
 
 .ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title,
@@ -210,7 +213,9 @@ section {
 .ant-table-thead .ant-table-cell {
   @apply text-white bg-accent !important;
 }
-
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  @apply bg-body-secondary text-primary-white !important;
+}
 .ant-tabs-nav {
   @apply max-w-[300px] md:max-w-[500px] lg:max-w-[700px] xl:max-w-[800px] !important;
 }
@@ -246,5 +251,39 @@ section {
 }
 
 .wrapper {
-  @apply bg-white rounded px-4 py-8 shadow-shadow;
+  @apply bg-body-secondary rounded px-4 py-8 shadow-shadow;
+}
+
+.ant-switch-handle {
+  display: none;
+}
+.ant-switch-inner-checked,
+.ant-switch-inner-unchecked {
+  @apply grid place-items-center !important;
+}
+.ant-switch .ant-switch-handle::before {
+  content: unset;
+}
+.ant-switch-inner {
+  @apply bg-accent !important;
+}
+
+.ant-menu-light {
+  @apply text-primary-white bg-body-secondary !important;
+}
+
+.ant-menu-light .ant-menu-item,
+.ant-menu-light .ant-menu-submenu-title,
+.ant-menu-light > .ant-menu .ant-menu-submenu-title {
+  @apply text-primary-white !important;
+}
+
+.ant-menu-light > .ant-menu-item-selected {
+  @apply text-accent !important;
+}
+.ant-menu-light.ant-menu-submenu-popup > .ant-menu {
+  @apply text-primary-white bg-body-secondary !important;
+}
+.ant-menu-light > .ant-menu-item .ant-menu-light > ant-menu-item-selected {
+  @apply text-accent !important;
 }

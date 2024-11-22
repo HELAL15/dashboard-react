@@ -159,6 +159,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
           scroll={{ x: 'max-content' }}
            />
            <Modal
+           centered
           title="Title"
           open={open}
           onOk={handleOk}

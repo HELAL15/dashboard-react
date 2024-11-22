@@ -19,6 +19,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { useTranslation } from 'react-i18next'
 import arEG from 'antd/locale/ar_EG';
 import enUS from 'antd/locale/en_US';
+import ThemeProvider from './helpers/ThemeProvider.tsx'
 
 
 const MainApp = () => {
@@ -34,7 +35,9 @@ const MainApp = () => {
     <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : enUS }>
       <RouterProgress/>
       <PersistGate loading={null} persistor={persistor} >
+        <ThemeProvider>
          <App />
+        </ThemeProvider>
       </PersistGate>
       <ToastContainer
           position="top-center"

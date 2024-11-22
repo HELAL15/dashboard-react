@@ -36,7 +36,9 @@ const Categories: FC<IProps> = () => {
       dataIndex: "category_image",
       align: "center",
       responsive: ["xs", "sm", "md", "lg"],
-      render: (image:any)=> <TableImg image={image} /> ,
+      render: (image:any)=>(
+        <TableImg image={image} /> 
+      ) ,
     },
 
     {
