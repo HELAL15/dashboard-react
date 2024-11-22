@@ -12,9 +12,8 @@ import { IoMdNotifications } from "react-icons/io";
 import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { MdDarkMode } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/features/ThemeSlice";
-import { RootState } from "../redux/store";
 /**
  * ==> props interface
  */
@@ -53,12 +52,10 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
 
   // const lang = i18next.language
 
-  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 768px)' });
+  const isMobileOrTablet = useMediaQuery({ query: '(max-width: 991px)' });
 
 
   const dispatch = useDispatch()
-  const theme = useSelector((state:RootState)=>state.theme.value)
-console.log(theme);
 
   const handleChangeTheme = () => {
     dispatch(toggleTheme())
@@ -73,7 +70,8 @@ console.log(theme);
           <div className="flex items-center justify-between py-6 px-4 md:px-6 bg-body-secondary rounded shadow-shadow">
             <div className="flex items-center gap-4 ">
             {
-              isMobileOrTablet ?  <button  onClick={toggleClose} >
+              isMobileOrTablet ?  
+              <button  onClick={toggleClose} >
                 {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
               </button> :
               <button  onClick={toggleCollapsed} >
