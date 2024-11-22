@@ -31,11 +31,6 @@ const Login: FC = () => {
 
 
   const setting = useSelector((state:RootState)=>state.setting)
-  console.log(setting);
-  
-  const {
-    site_name:siteName 
-  } = setting?.setting
 
 
   const [loading , setLoading] = useState(false)
@@ -77,7 +72,7 @@ const Login: FC = () => {
           <div className=" space-y-8 w-[95%] md:w-[50%] lg:w-[35%] shadow-md
             bg-body-secondary py-10 px-4 rounded-md">
               <div className="space-y-2 text-center">
-                <h2 className="text-3xl font-medium text-accent">{siteName}</h2>
+                <h2 className="text-3xl font-medium text-accent">{setting?.setting?.site_name}</h2>
                 <p className="text-base text-primary">admin dashboard</p>
               </div>
               <Spin spinning={loading} size="large" >

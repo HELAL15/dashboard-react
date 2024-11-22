@@ -34,11 +34,11 @@ const MainApp = () => {
   return (
     <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : enUS }>
       <RouterProgress/>
-      <PersistGate loading={null} persistor={persistor} >
         <ThemeProvider>
+      <PersistGate loading={null} persistor={persistor} >
          <App />
-        </ThemeProvider>
       </PersistGate>
+        </ThemeProvider>
       <ToastContainer
           position="top-center"
           autoClose={2000}
