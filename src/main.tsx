@@ -30,7 +30,7 @@ const MainApp = () => {
 
 
 
- 
+
   return (
     <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : enUS }>
       <RouterProgress/>
