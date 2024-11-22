@@ -30,10 +30,12 @@ const Login: FC = () => {
   } = useForm<IFormInput>();
 
 
-  const {setting} = useSelector((state:RootState)=>state.setting)
+  const setting = useSelector((state:RootState)=>state.setting)
+  console.log(setting);
+  
   const {
     site_name:siteName 
-  } = setting
+  } = setting?.setting
 
 
   const [loading , setLoading] = useState(false)
