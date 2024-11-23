@@ -21,6 +21,10 @@ import FAQDetails from "./pages/faqs/FAQDetails";
 import UpdateFaq from "./pages/faqs/UpdateFaq";
 import { AppDispatch } from "./redux/store";
 import Profile from "./pages/account/Profile";
+import Users from "./pages/users/Users";
+import AddUser from "./pages/users/AddUser";
+import Admins from "./pages/admins/Admins";
+import AddAdmin from "./pages/admins/AddAdmin";
 
 
 
@@ -53,6 +57,18 @@ function App() {
 
           {/* settings page */}
           <Route path="/settings" element={<Settings/>}/>
+
+          {/* users page  */}
+          <Route path="/users" element={<Users/>} />
+          <Route path="/users/view/:id" element={<CategoryDetails/>} />
+          <Route path="/users/add-user" element={<AddUser/>}/>
+          <Route path="/users/edit/:id" element={<UpdateCateogry/>}/>
+
+          {/* admins page  */}
+          <Route path="/admins" element={<Admins/>} />
+          <Route path="/admins/view/:id" element={<CategoryDetails/>} />
+          <Route path="/admins/add-admin" element={<AddAdmin/>}/>
+          <Route path="/admins/edit/:id" element={<UpdateCateogry/>}/>
 
           {/* categories page  */}
           <Route path="/categories" element={<Categories/>} />

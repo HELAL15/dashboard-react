@@ -39,7 +39,7 @@ const items: MenuItem[] = [
     icon: <FaUsersCog />,
     children: [
       { key: '/admins', icon:<FaUsersCog /> , label: <NavLink to="/admins">all admins</NavLink> },
-      { key: '/add-admin', icon: <TiPlus /> , label: <NavLink to="/add-admin">add admin</NavLink> },
+      { key: '/admins/add-admin', icon: <TiPlus /> , label: <NavLink to="/admins/add-admin">add admin</NavLink> },
     ],
   },
   {
@@ -48,7 +48,7 @@ const items: MenuItem[] = [
     icon: <FaUsers />,
     children: [
       { key: '/users', icon:<FaUsers /> , label: <NavLink to="/users">all users</NavLink> },
-      { key: '/add-user', icon: <TiPlus /> , label: <NavLink to="/add-user">add user</NavLink> },
+      { key: '/users/add-user', icon: <TiPlus /> , label: <NavLink to="/users/add-user">add user</NavLink> },
     ],
   },
   {

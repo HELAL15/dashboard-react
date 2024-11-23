@@ -68,7 +68,7 @@ const navigate = useNavigate()
         <SecTitle title={t("add_category_page")} />
         <Spin spinning={isLoading} size="large" className="add-category-form">
           <form onSubmit={handleSubmit(onSubmit)} className="wrapper">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               {/* English Title */}
               <div className="package">
                 <label className="label" htmlFor="title_en">{t("title_en")}</label>

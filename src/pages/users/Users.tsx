@@ -1,4 +1,5 @@
 import { FC, memo } from "react";
+import SecTitle from "../../components/global/SecTitle";
 
 /**
  * ==> props interface
@@ -13,7 +14,11 @@ interface IProps {
 const Users: FC<IProps> = ({  }) => {
   return (
     <>
-
+    <section>
+      <div className="container">
+        <SecTitle title="Users" />
+      </div>
+    </section>
     </>
   );
 }
