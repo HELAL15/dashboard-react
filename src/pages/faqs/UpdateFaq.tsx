@@ -64,11 +64,8 @@ useEffect(() => {
       setLoading(false)
       navigate('/faqs')
       reset()
-      // Log response and show success message
-      console.log(res);
       toast.success(res.data.message);
     } catch (err:any) {
-      console.log(err);
       setLoading(false)
       
       toast.error(err.response.data.message);
@@ -82,8 +79,8 @@ useEffect(() => {
     <section>
       <div className="container">
         <SecTitle title="add FAQ page" />
-        <div className="wrapper">
           <Spin spinning={loading || load} size="large" >
+        <div className="wrapper">
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2 gap-4 ">
                 <div className="package">
@@ -141,8 +138,8 @@ useEffect(() => {
                 <button type="submit" disabled={loading} className="btn btn-primary w-fit col-span-2" >{loading? <Spin/> : 'add faq'}</button>
               </div>
             </form>
-          </Spin>
         </div>
+          </Spin>
       </div>
     </section>
     </>

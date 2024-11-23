@@ -75,7 +75,6 @@ const UpdateCateogry: FC = () => {
       toast.success(res.data.message);
     } catch (err) {
       setIsLoading(false);
-      console.error(err);
       toast.error("Error while updating category");
     }
   };

@@ -1,7 +1,10 @@
 import { FC, memo } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import {  TableColumnsType } from "antd";
 import SecTitle from "../../components/global/SecTitle";
+import CustomTable from "../../components/CustomTable";
+import { useTranslation } from "react-i18next";
+import TableImg from "../../components/TableImg";
 
 // import useFetch from "../../hooks/useFetch";
 
@@ -56,6 +59,42 @@ const SubCategories: FC<IProps> = () => {
     
 
   // ];
+
+  const {i18n} = useTranslation()
+  const lang = i18n.language
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const parentId = searchParams.get('parent_id');
+  const endPoint = `categorys?parent_id=${parentId}`
+  console.log(endPoint);
+
+  const cols = [
+    {
+      title:'main category',
+      dataIndex:`parent_title_${lang}`,
+      align:'center',
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+    {
+      title: "title",
+      dataIndex: `title_${lang}`,
+      align: "center",
+      responsive: ["xs", "sm", "md", "lg"],
+    },
+
+    {
+      title: "image",
+      dataIndex: "category_image",
+      align: "center",
+      responsive: ["xs", "sm", "md", "lg"],
+      render: (image:any)=>(
+        <TableImg image={image} /> 
+      ) ,
+    },
+  ]
+  
+
   return (
     <>
     <section>
@@ -67,16 +106,13 @@ const SubCategories: FC<IProps> = () => {
             Add category
           </Link>
         </div>
-        {/* <CustomTable 
-          data={data}
-          isLoading={isLoading}
-          refetch={refetch}
-          deleteEndPoint="categorys" 
-          cols={columns} 
-          /> */}
+        <CustomTable
+          endPoint={endPoint}
+          cols={cols}
+          />
       </div>
     </section>
-            </>
+  </>
   );
 };
 

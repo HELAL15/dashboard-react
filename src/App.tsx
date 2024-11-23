@@ -20,6 +20,7 @@ import { fetchSettingsAsync } from "./redux/features/SettingSlice";
 import FAQDetails from "./pages/faqs/FAQDetails";
 import UpdateFaq from "./pages/faqs/UpdateFaq";
 import { AppDispatch } from "./redux/store";
+import Profile from "./pages/account/Profile";
 
 
 
@@ -47,6 +48,9 @@ function App() {
           {/* test page */}
           <Route path="/test" element={<Test/>}/> 
 
+          {/* profile page */}
+          <Route path="/profile" element={<Profile/>}/>
+
           {/* settings page */}
           <Route path="/settings" element={<Settings/>}/>
 
@@ -58,6 +62,9 @@ function App() {
 
           {/* sub categories page */}
           <Route path="/sub-categories" element={<SubCategories/>} />
+          <Route path="/sub-categories/view/:id" element={<p>view sub</p>} />
+          <Route path="/sub-categories/add-sub-category" element={<p>add sub</p>} />
+          <Route path="/sub-categories/edit/:id" element={<p>update sub</p>} />
           
           {/* faqs page */}
           <Route path="/faqs" element={<Faqs/>} />

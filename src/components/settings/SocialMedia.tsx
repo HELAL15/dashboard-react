@@ -13,9 +13,8 @@ interface IProps {
 const SocialMedia: FC<IProps> = ({  }) => {
   return (
     <>
-    <section>
-      <div className="container">
-      <form action="" className="bg-white rounded px-4 py-8 shadow-shadow">
+    
+          <form action="" className="">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="package flex flex-col ">
                 <label className="label" htmlFor="facebook">Facebook</label>
@@ -42,8 +41,6 @@ const SocialMedia: FC<IProps> = ({  }) => {
               <button className="btn btn-primary">Save Links</button>
             </div>
           </form>
-      </div>
-    </section>
     </>
   );
 }

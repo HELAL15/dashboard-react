@@ -53,8 +53,11 @@ const Settings: FC<IProps> = ({  }) => {
             >
               {items.map((item) => (
                 <Tabs.TabPane tab={item.label} key={item.key}>
-                  {item.children}
-                </Tabs.TabPane>
+                 
+                      <div className="wrapper">
+                        {item.children}
+                      </div>
+                  </Tabs.TabPane>
               ))}
             </Tabs>
         </div>

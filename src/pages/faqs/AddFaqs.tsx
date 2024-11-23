@@ -70,8 +70,8 @@ const AddFaqs: FC<IProps> = ({  }) => {
     <section>
       <div className="container">
         <SecTitle title="add FAQ page" />
-        <div className="wrapper">
           <Spin spinning={loading} size="large" >
+        <div className="wrapper">
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2 gap-4 ">
                 <div className="package">
@@ -129,8 +129,8 @@ const AddFaqs: FC<IProps> = ({  }) => {
                 <button type="submit" disabled={loading} className="btn btn-primary w-fit col-span-2" >{loading? <Spin/> : 'add faq'}</button>
               </div>
             </form>
-          </Spin>
         </div>
+          </Spin>
       </div>
     </section>
     </>

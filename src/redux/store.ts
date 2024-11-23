@@ -6,6 +6,7 @@ import PageLoadingSlice from './features/PageLoadingSlice';
 import SettingSlice from './features/SettingSlice';
 import UserSlice from './features/UserSlice';
 import ThemeSlice from './features/ThemeSlice';
+import InternetSlice from './features/InternetSlice';
 
 
 // Combine Reducers
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   user: UserSlice,
   loading: PageLoadingSlice,
   setting: SettingSlice,
-  theme: ThemeSlice
+  theme: ThemeSlice,
+  internetConnection: InternetSlice,
 });
 const customCookieStorage = {
   getItem: (key: string) => {

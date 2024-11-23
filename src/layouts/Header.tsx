@@ -43,8 +43,7 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
   const handleOptionChange = (value: any) => {
     i18next.changeLanguage(value);
     i18n.changeLanguage(value)
-    // window.location.reload();
-    navigate(location.pathname , {replace: true})
+    navigate(location , {replace: true})
     console.log(`selected ${value}`)
    
 
@@ -71,33 +70,35 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
             <div className="flex items-center gap-4 ">
             {
               isMobileOrTablet ?  
-              <button  onClick={toggleClose} >
-                {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              </button> :
-              <button  onClick={toggleCollapsed} >
-              {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </button>
+                <button className="grid place-items-center"  onClick={toggleClose} >
+                  {collapsed ? <MenuUnfoldOutlined className="text-lg" /> : <MenuFoldOutlined className="text-lg" />}
+                </button> 
+ :
+                <button className="grid place-items-center" onClick={toggleCollapsed} >
+                {collapsed ? <MenuUnfoldOutlined className="text-lg" /> : <MenuFoldOutlined className="text-lg" />}
+              </button>
             }
+
             <Tooltip placement="bottom" title='visit shop' >
               <Link to='https://exclusive15.vercel.app/' target="_blank" className="flex items-center gap-2">
-                <FaShop />
+                <FaShop className="text-lg md:text-2xl"  />
                 {/* <span className="text-sm">shop</span> */}
               </Link>
             </Tooltip>
             </div>
-            <div className="flex items-center gap-1 md:gap-4">
+            <div className="flex items-center gap-1 md:gap-3">
                 <Select
                   defaultValue={localStorage.getItem("i18nextLng") || 'ar'}
-                  style={{ width: 90 , height:24 }}
+                  style={{ width: 85 , height:24 }}
                   onChange={handleOptionChange}
-                  className=" select-lang"
+                  className=" select-lang text-primary-white px-0"
                 >
                   {/* {t("topHeader.lang.en")} */}
                 <Option value="en">english</Option>
                 <Option value="ar">العربية</Option>
               </Select>
               <NavLink className="text-lg md:text-xl font-medium" to={'/notifications'}>
-                <IoMdNotifications />
+                <IoMdNotifications className="text-lg md:text-2xl" />
               </NavLink>
               <Tooltip title={'theme'} >
                 <Switch

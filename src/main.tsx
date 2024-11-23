@@ -4,8 +4,8 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
-import { Provider } from 'react-redux'
-import { persistor, store } from './redux/store.ts'
+import { Provider, useSelector } from 'react-redux'
+import { persistor, RootState, store } from './redux/store.ts'
 import 'react-toastify/dist/ReactToastify.css';
 import 'swiper/css';
 import 'swiper/css/navigation'
@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next'
 import arEG from 'antd/locale/ar_EG';
 import enUS from 'antd/locale/en_US';
 import ThemeProvider from './helpers/ThemeProvider.tsx'
+import CheckInternetProcider from './helpers/CheckInternetProcider.tsx'
 
 
 const MainApp = () => {
@@ -28,20 +29,23 @@ const MainApp = () => {
   const direction = lang  === 'ar' ? "rtl" : "ltr"
 
 
+  const theme = useSelector((state:RootState)=>state.theme.value)
 
 
 
   return (
     <ConfigProvider direction={direction} locale={lang === 'ar' ? arEG : enUS }>
       <RouterProgress/>
+      <CheckInternetProcider>
         <ThemeProvider>
-      <PersistGate loading={null} persistor={persistor} >
-         <App />
-      </PersistGate>
+          <PersistGate loading={null} persistor={persistor} >
+            <App />
+          </PersistGate>
         </ThemeProvider>
+      </CheckInternetProcider>
       <ToastContainer
-          position="top-center"
-          autoClose={2000}
+          position="bottom-right"
+          autoClose={1500}
           newestOnTop
           closeOnClick
           rtl={lang === 'ar' ? true : false}
@@ -49,7 +53,7 @@ const MainApp = () => {
           draggable
           pauseOnHover
           transition={Flip}
-          theme="dark"
+          theme={theme}
         />
      
     </ConfigProvider>

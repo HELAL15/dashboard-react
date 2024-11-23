@@ -18,7 +18,7 @@ const HomeCard: FC<IProps> = ({ icon , title , count , link }) => {
   return (
     <>
       <NavLink to={`/${link}`} className="card rounded 
-        shadow-shadow group px-4 py-3 sm:py-5 flex-col 
+        shadow-shadow group px-2 md:px-4 py-6 flex-col 
         sm:flex-row text-center sm:text-start flex items-center 
         flex-wrap justify-center sm:justify-start gap-2
          bg-body-secondary
@@ -31,7 +31,7 @@ const HomeCard: FC<IProps> = ({ icon , title , count , link }) => {
           {icon}
         </i>
         <div className='relative z-10'>
-          <h2 className="text-base font-semibold group-hover:text-white duration-300">{title}</h2>
+          <h2 className="text-sm md:text-base font-semibold group-hover:text-white duration-300">{title}</h2>
           <p className="text-accent text-sm group-hover:text-white duration-300">{count}</p>
         </div>
       </NavLink>

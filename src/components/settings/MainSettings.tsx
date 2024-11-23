@@ -99,9 +99,8 @@ const MainSettings: FC<IProps> = ({}) => {
   
 
   return (
-    <section>
-      <div className="container">
-        <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded px-4 py-8 shadow-shadow">
+
+        <form onSubmit={handleSubmit(onSubmit)} >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="package flex flex-col col-span-2 md:col-span-1">
               <label className="label" htmlFor="siteName">Site Name in Arabic</label>
@@ -187,8 +186,6 @@ const MainSettings: FC<IProps> = ({}) => {
             <button className="btn btn-primary" type="submit">Send</button>
           </div>
         </form>
-      </div>
-    </section>
   );
 }
 
