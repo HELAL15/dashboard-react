@@ -37,7 +37,8 @@ const ProtectedRoutes: FC<IProps> = ({  }) => {
   useEffect(() => {
     const checkTokenValidity = () => {
       const isMyTokenExpired = isTokenExpired(token);
-
+      console.log("checked validity");
+      
       if (token && isMyTokenExpired) {
         persistor.purge()
         removeAllTokens();
@@ -52,7 +53,7 @@ const ProtectedRoutes: FC<IProps> = ({  }) => {
       }
     };
 
-    const intervalId = setInterval(checkTokenValidity, 120000);
+    const intervalId = setInterval(checkTokenValidity, 60000);
 
     checkTokenValidity();
 

@@ -14,7 +14,7 @@ interface IProps {
 const NotFound: FC<IProps> = ({  }) => {
   return (
     <>
-    <section className="">
+    <section className="h-dvh grid place-items-center">
       <div className="container">
         <div className="flex items-center gap-4 flex-col">
           <h2 className="text-primary text-[2rem] md:text-[4rem] text-center font-bold capitalize">404 not found page</h2>

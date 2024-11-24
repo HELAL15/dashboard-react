@@ -82,7 +82,7 @@ section {
 }
 
 .btn {
-  @apply py-3 px-2 md:px-9 rounded my-1 capitalize font-medium text-base duration-300;
+  @apply py-3 px-4 md:px-9 rounded my-1 capitalize font-medium text-base duration-300;
 }
 
 .btn-primary {
@@ -160,7 +160,7 @@ section {
 }
 
 .ant-pagination .ant-pagination-item {
-  @apply rounded !important;
+  @apply rounded bg-transparent !important;
 }
 
 .ant-pagination .ant-pagination-item-active {

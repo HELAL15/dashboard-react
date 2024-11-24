@@ -7,8 +7,7 @@ import { Spin } from "antd";
 import { setToken } from "../../helpers/Utils";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/features/UserSlice";
-import { RootState } from "../../redux/store";
-import { jwtDecode } from "jwt-decode";
+import { persistor, RootState } from "../../redux/store";
 
 /**
  * ==> Form data interface
@@ -47,15 +46,12 @@ const Login: FC = () => {
     try{
       setLoading(true)
       const res = await request.post('user/login' , formData);
+      const token = res.data.data.token
+      await setToken("accessTokenAdmin",token )
+      await dispatch(setUser(res.data.data))
+      await persistor.flush();
       setLoading(false)
       toast.success(res.data.message)
-      // handleLogin(res?.data.data)
-      const token = res.data.data.token
-      const decoded: any = jwtDecode(token);
-      const remainingTimeInSeconds = decoded.exp - Math.floor(Date.now() / 1000);
-      const remainingTimeInMinutes = Math.floor(remainingTimeInSeconds / 60);
-      setToken("accessTokenAdmin",token , remainingTimeInMinutes )
-      dispatch(setUser(res?.data.data))
       request.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       navigate('/')
       reset();

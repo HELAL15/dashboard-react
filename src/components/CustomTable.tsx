@@ -23,7 +23,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
-  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}&limit=3` );
+  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}` );
 
 
   
@@ -145,7 +145,6 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
            : null}
         </div>
           <Table 
-          size="middle"
           bordered
           loading={{
             spinning: isLoading,

@@ -2,7 +2,6 @@ import { FC, memo } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Select, Switch, Tooltip } from "antd";
 import i18next from "i18next";
-// import { useTranslation } from "react-i18next";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -14,6 +13,12 @@ import { useTranslation } from "react-i18next";
 import { MdDarkMode } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/features/ThemeSlice";
+import { BiLogOut } from "react-icons/bi";
+import { request } from "../api/request";
+import { toast } from "react-toastify";
+import { removeToken } from "../helpers/Utils";
+import { persistor } from "../redux/store";
+import { removeUser } from "../redux/features/UserSlice";
 /**
  * ==> props interface
  */
@@ -44,9 +49,6 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
     i18next.changeLanguage(value);
     i18n.changeLanguage(value)
     navigate(location , {replace: true})
-    console.log(`selected ${value}`)
-   
-
   }
 
   // const lang = i18next.language
@@ -60,6 +62,20 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
     dispatch(toggleTheme())
   }
 
+  const handleLogout = async ()=> {
+    try{
+      const res = await request.post('/user/user-logout')
+      const message = res?.data?.message
+      toast.success(message)
+      await persistor.purge()
+      await removeToken('accessTokenAdmin')
+      await dispatch(removeUser())
+      navigate('/admin/login')
+    }catch(err:any){
+      console.log(err)
+    }
+  }
+
 
   return (
     <>
@@ -67,7 +83,7 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
       <header className="py-3 sticky top-0 z-20">
         <div className="container  ">
           <div className="flex items-center justify-between py-6 px-4 md:px-6 bg-body-secondary rounded shadow-shadow">
-            <div className="flex items-center gap-4 ">
+            <div className="flex items-center gap-3 md:gap-4 ">
             {
               isMobileOrTablet ?  
                 <button className="grid place-items-center"  onClick={toggleClose} >
@@ -85,6 +101,10 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
                 {/* <span className="text-sm">shop</span> */}
               </Link>
             </Tooltip>
+            <button onClick={handleLogout} className="flex items-center md:gap-2">
+              <BiLogOut className="text-lg" />
+              <span className="hidden md:block">logout</span>
+            </button>
             </div>
             <div className="flex items-center gap-1 md:gap-3">
                 <Select

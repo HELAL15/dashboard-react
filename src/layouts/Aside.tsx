@@ -117,7 +117,7 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
 
   return (
     <aside className={` flex flex-col pb-5 fixed lg:sticky overflow-hidden top-0 
-    ${close ? "inset-x-0" : "inset-x-[-100%]"} lg:inset-x-0 shadow-shadow h-screen z-50 bg-body-secondary duration-300 w-[95%] md:w-[40%] 
+    ${close ? "inset-x-0" : "inset-x-[-100%]"} lg:inset-x-0 shadow-shadow h-dvh z-50 bg-body-secondary duration-300 w-[95%] md:w-[40%] 
     ${collapsed ? 'lg:w-fit ' : 'lg:w-[18%]'} 
     flex-shrink-0`}>
       <div className="logo font-bold text-2xl py-6 px-3 mt-1 border-b border-b-slate-200 flex items-center justify-between">
