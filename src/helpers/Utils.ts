@@ -21,6 +21,7 @@ export const setToken = (tokenName:string ,token:string , durationInMinutes?:any
   return cookie.set(tokenName , token , {
     secure: true, 
     sameSite: 'strict',
+    path: '/',
   })
 }
 
@@ -34,6 +35,7 @@ export const removeAllTokens = () => {
   cookie.remove('accessTokenAdmin')
   persistor.purge();
   cookie.remove('persist:root', { path: '/' });
+  cookie.removeAll()
 }
 
 

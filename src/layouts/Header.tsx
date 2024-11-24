@@ -16,7 +16,7 @@ import { toggleTheme } from "../redux/features/ThemeSlice";
 import { BiLogOut } from "react-icons/bi";
 import { request } from "../api/request";
 import { toast } from "react-toastify";
-import { removeToken } from "../helpers/Utils";
+import { removeAllTokens, removeToken } from "../helpers/Utils";
 import { persistor } from "../redux/store";
 import { removeUser } from "../redux/features/UserSlice";
 /**
@@ -68,6 +68,7 @@ const Header: FC<IProps> = ({ collapsed ,  toggleCollapsed , toggleClose }) => {
       const message = res?.data?.message
       toast.success(message)
       await persistor.purge()
+      await removeAllTokens()
       await removeToken('accessTokenAdmin')
       await dispatch(removeUser())
       navigate('/admin/login')
