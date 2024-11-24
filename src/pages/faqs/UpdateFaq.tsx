@@ -6,6 +6,7 @@ import { request } from "../../api/request";
 import { useNavigate, useParams } from "react-router";
 import { Spin } from "antd";
 import useFetch from "../../hooks/useFetch";
+import BreadCrumb from "../../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -76,6 +77,7 @@ useEffect(() => {
 
   return (
     <>
+    <BreadCrumb/>
     <section>
       <div className="container">
         <SecTitle title="add FAQ page" />
@@ -84,7 +86,7 @@ useEffect(() => {
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2 gap-4 ">
                 <div className="package">
-                  <label htmlFor="question_ar">Question ar</label>
+                  <label className="label req" htmlFor="question_ar">Question ar</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -97,7 +99,7 @@ useEffect(() => {
                     {errors.question_ar && <p style={{ color: "red" }}>{errors.question_ar.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="question_en">Question en</label>
+                  <label className="label req" htmlFor="question_en">Question en</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -110,7 +112,7 @@ useEffect(() => {
                     {errors.question_en && <p style={{ color: "red" }}>{errors.question_en.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="answer_ar">Answer ar</label>
+                  <label className="label req" htmlFor="answer_ar">Answer ar</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -123,7 +125,7 @@ useEffect(() => {
                     {errors.answer_ar && <p style={{ color: "red" }}>{errors.answer_ar.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="answer_en">Answer en</label>
+                  <label className="label req" htmlFor="answer_en">Answer en</label>
                   <input 
                     className="input" 
                     type="text" 

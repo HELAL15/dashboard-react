@@ -1,10 +1,12 @@
 import { FC, memo, useState } from "react";
-import SecTitle from "../../components/global/SecTitle";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { request } from "../../api/request";
 import { useNavigate } from "react-router";
 import { Spin } from "antd";
+import BreadCrumb from "../../components/global/BreadCrumb";
+import CustomButton from "../../components/global/CustomButton";
+import { TiPlus } from "react-icons/ti";
 
 /**
  * ==> props interface
@@ -67,15 +69,15 @@ const AddFaqs: FC<IProps> = ({  }) => {
 
   return (
     <>
+    <BreadCrumb/>
     <section>
       <div className="container">
-        <SecTitle title="add FAQ page" />
           <Spin spinning={loading} size="large" >
         <div className="wrapper">
             <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="grid grid-cols-2 gap-4 ">
                 <div className="package">
-                  <label htmlFor="question_ar">Question ar</label>
+                  <label className="label req" htmlFor="question_ar">Question ar</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -88,7 +90,7 @@ const AddFaqs: FC<IProps> = ({  }) => {
                     {errors.question_ar && <p style={{ color: "red" }}>{errors.question_ar.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="question_en">Question en</label>
+                  <label className="label req" htmlFor="question_en">Question en</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -101,7 +103,7 @@ const AddFaqs: FC<IProps> = ({  }) => {
                     {errors.question_en && <p style={{ color: "red" }}>{errors.question_en.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="answer_ar">Answer ar</label>
+                  <label className="label req" htmlFor="answer_ar">Answer ar</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -114,7 +116,7 @@ const AddFaqs: FC<IProps> = ({  }) => {
                     {errors.answer_ar && <p style={{ color: "red" }}>{errors.answer_ar.message}</p>}
                 </div>
                 <div className="package">
-                  <label htmlFor="answer_en">Answer en</label>
+                  <label className="label req" htmlFor="answer_en">Answer en</label>
                   <input 
                     className="input" 
                     type="text" 
@@ -126,7 +128,14 @@ const AddFaqs: FC<IProps> = ({  }) => {
                     />
                     {errors.answer_en && <p style={{ color: "red" }}>{errors.answer_en.message}</p>}
                 </div>
-                <button type="submit" disabled={loading} className="btn btn-primary w-fit col-span-2" >{loading? <Spin/> : 'add faq'}</button>
+                <CustomButton 
+                icon={<TiPlus className="!text-lg" />} 
+                loading={loading} 
+                className="col-span-2" 
+                type="submit"
+                >
+                  add faq
+                </CustomButton>
               </div>
             </form>
         </div>

@@ -1,9 +1,11 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
-import SecTitle from "../../components/global/SecTitle";
 import CustomTable from "../../components/CustomTable";
 import { useTranslation } from "react-i18next";
 import { TableColumnsType } from "antd";
+import BreadCrumb from "../../components/global/BreadCrumb";
+import CustomButton from "../../components/global/CustomButton";
+import { TiPlus } from "react-icons/ti";
 
 
 /**
@@ -41,17 +43,22 @@ const Faqs: FC<IProps> = () => {
 
  
   return (
-    <section>
-      <div className="container">
-        <div className="flex items-center justify-between">
-          <SecTitle title="FAQs Page" subTitle="All questions users may ask" />
-          <Link to="/faqs/add-faq" className="btn btn-primary">
-            Add FAQ
-          </Link>
+    <>
+      <BreadCrumb/>
+      <section>
+        <div className="container">
+          <div className="flex items-center justify-end">
+            
+            <Link to="/faqs/add-faq">
+              <CustomButton icon={<TiPlus className="!text-lg" />} >
+                Add FAQ
+              </CustomButton>
+            </Link>
+          </div>
+          <CustomTable cols={columns} endPoint="faqs" />
         </div>
-        <CustomTable cols={columns} endPoint="faqs" />
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

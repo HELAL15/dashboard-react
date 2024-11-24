@@ -27,9 +27,12 @@ const userSlice = createSlice({
       state.data = {};
       state.isAuthenticated = false;
     },
+    setUnAuthed : (state) => {
+      state.isAuthenticated = false;
+    },
   },
 });
 
 // Export actions and reducer
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser , setUnAuthed } = userSlice.actions;
 export default userSlice.reducer;

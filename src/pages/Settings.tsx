@@ -3,6 +3,7 @@ import { FC, memo } from "react";
 import MainSettings from "../components/settings/MainSettings";
 import SocialMedia from "../components/settings/SocialMedia";
 import SiteTags from "../components/settings/SiteTags";
+import BreadCrumb from "../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -44,6 +45,7 @@ const Settings: FC<IProps> = ({  }) => {
 
   return (
     <>
+          <BreadCrumb/>
       <section>
         <div className="container">
           <Tabs

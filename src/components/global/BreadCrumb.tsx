@@ -26,11 +26,11 @@ const BreadCrumb: FC<IProps> = () => {
     
     return {
       title: isCurrentPage ? (
-        <span className="text-base">
+        <span className="text-base !text-accent">
           {isNumber ? snippet : t(`breadcrumb.${snippet}`)}
         </span>
       ) : (
-        <Link className="text-base font-normal" to={url}>
+        <Link className="text-base font-normal !text-primary hover:!text-primary-white duration-300" to={url}>
           {isNumber ? snippet : t(`breadcrumb.${snippet}`)}
         </Link>
       ),
@@ -40,7 +40,7 @@ const BreadCrumb: FC<IProps> = () => {
   return (
     <section>
       <div className="container">
-        <Breadcrumb items={[{ title: <Link className="text-base font-normal" to="/">{t("breadcrumb.home")}</Link> }, ...breadcrumbItems]} />
+        <Breadcrumb items={[{ title: <Link className="text-base font-normal !text-primary hover:!text-primary-white duration-300 " to="/">{t("breadcrumb.home")}</Link> }, ...breadcrumbItems]} />
       </div>
     </section>
   );

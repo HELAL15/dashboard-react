@@ -2,10 +2,6 @@ import { FC, memo, useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, Tooltip } from 'antd';
 import { IoClose } from "react-icons/io5";
-// import logo from '../assets/Category-Camera.png';
-import {
-  ContainerOutlined,
-} from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { TiPlus } from "react-icons/ti";
 import { BiSolidCategory } from "react-icons/bi";
@@ -13,10 +9,11 @@ import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { useMediaQuery } from 'react-responsive';
 import { FaHome, FaUsersCog } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
-import { FaUsers } from "react-icons/fa6";
+import { FaClipboardQuestion, FaUsers } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Gravatar from 'react-gravatar'
+import { useTranslation } from "react-i18next";
 
 
 interface IProps {
@@ -30,57 +27,7 @@ interface IProps {
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-const items: MenuItem[] = [
-  { key: '/', icon: <FaHome /> , label: <NavLink to="/">home</NavLink> },
-  { key: '/settings', icon: <IoMdSettings /> , label: <NavLink to="/settings">settings</NavLink> },
-  {
-    key: 'sub1',
-    label: 'admins',
-    icon: <FaUsersCog />,
-    children: [
-      { key: '/admins', icon:<FaUsersCog /> , label: <NavLink to="/admins">all admins</NavLink> },
-      { key: '/admins/add-admin', icon: <TiPlus /> , label: <NavLink to="/admins/add-admin">add admin</NavLink> },
-    ],
-  },
-  {
-    key: 'sub2',
-    label: 'users',
-    icon: <FaUsers />,
-    children: [
-      { key: '/users', icon:<FaUsers /> , label: <NavLink to="/users">all users</NavLink> },
-      { key: '/users/add-user', icon: <TiPlus /> , label: <NavLink to="/users/add-user">add user</NavLink> },
-    ],
-  },
-  {
-    key: 'sub3',
-    label: 'categories',
-    icon: <BiSolidCategory />,
-    children: [
-      
-      { key: '/categories', icon:<BiSolidCategory /> , label: <NavLink to="/categories">all categories</NavLink> },
-      { key: '/categories/add-category', icon: <TiPlus /> , label: <NavLink to="/categories/add-category">add category</NavLink> },
-    ],
-  },
-  {
-    key: 'sub4',
-    label: 'products',
-    icon: <MdOutlineProductionQuantityLimits />,
-    children: [
-      { key: '/products', icon:<MdOutlineProductionQuantityLimits /> , label: <NavLink to="/products">all products</NavLink> },
-      { key: '/add-product', icon: <TiPlus /> , label: <NavLink to="/add-product">add product</NavLink> },
-    ],
-  },
-  {
-    key: 'sub5',
-    label: 'FAQS',
-    icon: <FaUsers />,
-    children: [
-      { key: '/faqs', icon:<FaUsers /> , label: <NavLink to="/faqs">all faqs</NavLink> },
-      { key: '/faqs/add-faq', icon: <TiPlus /> , label: <NavLink to="/faqs/add-faq">add faq</NavLink> },
-    ],
-  },
-  { key: '/orders', icon: <ContainerOutlined />, label: <NavLink to="/orders">orders</NavLink> },
-];
+
 
 const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
   const location = useLocation();
@@ -91,7 +38,69 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
     setClose(false)
   }, [location , isMobileOrTablet]);
 
+  const {t} = useTranslation()
 
+  const items: MenuItem[] = [
+    { key: '/', icon: <FaHome className="!text-lg" /> , label: <NavLink className={'text-sm font-normal'} to="/">{t('aside.home')}</NavLink> },
+    { key: '/settings', icon: <IoMdSettings className="!text-lg" /> , label: <NavLink className={'text-sm font-normal'} to="/settings">{t('aside.settings')}</NavLink> },
+    {
+      key: 'sub1',
+      label: <span className="text-base font-normal" >{t("aside.admins.index")}</span>,
+      icon: <FaUsersCog className="!text-lg" />,
+      children: [
+        { key: '/admins', icon:<FaUsersCog className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/admins">{t("aside.admins.all")}</NavLink> },
+        { key: '/admins/add-admin', icon: <TiPlus className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/admins/add-admin">{t("aside.admins.add")}</NavLink> },
+      ],
+    },
+    {
+      key: 'sub2',
+      label: <span className="text-base font-normal" >{t("aside.users.index")}</span>,
+      icon: <FaUsers className="!text-lg" />,
+      children: [
+        { key: '/users', icon:<FaUsers className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/users">{t("aside.users.all")}</NavLink> },
+        { key: '/users/add-user', icon: <TiPlus className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/users/add-user">{t("aside.users.add")}</NavLink> },
+      ],
+    },
+    {
+      key: 'sub3',
+      label: <span className="text-base font-normal" >{t('aside.categories.index')}</span>,
+      icon: <BiSolidCategory className="!text-lg" />,
+      children: [
+        
+        { key: '/categories', icon:<BiSolidCategory className="!text-lg" /> ,
+           label: <NavLink className={'text-sm font-normal'} to="/categories">{t('aside.categories.all')}</NavLink> },
+        { key: '/categories/add-category', icon: <TiPlus className="!text-lg" /> ,
+           label: <NavLink className={'text-sm font-normal'} to="/categories/add-category">{t('aside.categories.add')}</NavLink> },
+      ],
+    },
+    {
+      key: 'sub4',
+      label: <span className="text-base font-normal" >{t("aside.products.index")}</span>,
+      icon: <MdOutlineProductionQuantityLimits className="!text-lg" />,
+      children: [
+        { key: '/products', icon:<MdOutlineProductionQuantityLimits className="!text-lg" /> ,
+           label: <NavLink className={'text-base font-normal'} to="/products">{t("aside.products.all")}</NavLink> },
+        { key: '/add-product', icon: <TiPlus className="!text-lg" /> ,
+           label: <NavLink className={'text-base font-normal'} to="/add-product">{t("aside.products.add")}</NavLink> },
+      ],
+    },
+    {
+      key: 'sub5',
+      label: <span className="text-base font-normal" >{t("aside.faqs.index")}</span>,
+      icon: <FaClipboardQuestion className="!text-lg" />,
+      children: [
+        { key: '/faqs', icon:<FaClipboardQuestion className="!text-lg" /> ,
+           label: <NavLink className={'text-sm font-normal'} to="/faqs">{t("aside.faqs.all")}</NavLink> },
+        { key: '/faqs/add-faq', icon: <TiPlus className="!text-lg" /> ,
+           label: <NavLink className={'text-sm font-normal'} to="/faqs/add-faq">{t("aside.faqs.add")}</NavLink> },
+      ],
+    },
+
+  ];
   
   const {setting} = useSelector((state:RootState)=>state.setting)
   const {

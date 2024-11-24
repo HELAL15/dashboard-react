@@ -19,7 +19,7 @@
 }
 
 .dark {
-  --background-color-body: #18191A;
+  --background-color-body: #18191a;
   --text-color: #fff;
   --primary-white-color: #242526;
   --accent-color: #50f3e3;
@@ -48,21 +48,22 @@ section {
   @apply py-6;
 }
 
-
-.navlink-profile .avatar{
-  @apply border border-primary p-1 w-fit rounded-full ;
+.navlink-profile .avatar {
+  @apply border border-primary p-1 w-fit rounded-full;
 }
-.navlink-profile.active .avatar{
-  @apply border-accent ;
+.navlink-profile.active .avatar {
+  @apply border-accent;
 }
-
 
 .package {
   @apply space-y-2;
 }
 
 .label {
-  @apply text-base text-primary font-normal;
+  @apply text-base text-primary font-normal relative;
+}
+.label.req {
+  @apply after:text-accent after:content-['*'] flex items-center gap-1;
 }
 
 .input {
@@ -81,7 +82,7 @@ section {
 }
 
 .btn {
-  @apply py-3 px-5 md:px-9 rounded my-1 capitalize font-medium text-base;
+  @apply py-3 px-2 md:px-9 rounded my-1 capitalize font-medium text-base duration-300;
 }
 
 .btn-primary {
@@ -214,7 +215,9 @@ section {
 .ant-menu-light > .ant-menu .ant-menu-item-selected {
   @apply bg-accent/10 text-accent !important;
 }
-
+.ant-menu-item a.active {
+  @apply font-bold !important;
+}
 .ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title,
 .ant-menu-light
   > .ant-menu
@@ -255,7 +258,7 @@ section {
   @apply bg-accent duration-300 hover:bg-accent-hover !important;
   box-shadow: 0 2px 0 rgba(255, 55, 5, 0.1);
 }
-.ant-btn-default:not(:disabled):not(.ant-btn-disabled){
+.ant-btn-default:not(:disabled):not(.ant-btn-disabled) {
   @apply bg-body border-body text-primary-white !important;
 }
 .ant-btn-default:not(:disabled):not(.ant-btn-disabled):hover {
@@ -293,7 +296,7 @@ section {
 .ant-menu-light > .ant-menu .ant-menu-submenu-title {
   @apply text-primary-white !important;
 }
-.ant-menu-item.ant-menu-item-selected{
+.ant-menu-item.ant-menu-item-selected {
   @apply text-accent !important;
 }
 .ant-menu-light > .ant-menu-item-selected {
@@ -306,33 +309,32 @@ section {
   @apply text-accent !important;
 }
 
-
-.ant-tabs .ant-tabs-tab{
+.ant-tabs .ant-tabs-tab {
   @apply text-primary-white !important;
 }
 
-
-
-.ant-modal .ant-modal-content , .ant-modal .ant-modal-title {
+.ant-modal .ant-modal-content,
+.ant-modal .ant-modal-title {
   @apply bg-body-secondary text-primary-white !important;
 }
 
-
-
-.ant-select-dropdown{
+.ant-select-dropdown {
   @apply bg-body-secondary text-primary-white !important;
 }
 
-.ant-select-item-option-content , .ant-select-selection-item{
+.ant-select-item-option-content,
+.ant-select-selection-item {
   @apply text-primary-white !important;
 }
-
 
 .anticon {
   @apply text-primary-white !important;
 }
 
+.ant-pagination .ant-pagination-item a {
+  @apply text-primary-white !important;
+}
 
-.ant-pagination .ant-pagination-item a{
+.ant-breadcrumb-separator {
   @apply text-primary-white !important;
 }

@@ -5,6 +5,7 @@ import SecTitle from "../../components/global/SecTitle";
 import CustomTable from "../../components/CustomTable";
 import { useTranslation } from "react-i18next";
 import TableImg from "../../components/TableImg";
+import BreadCrumb from "../../components/global/BreadCrumb";
 
 // import useFetch from "../../hooks/useFetch";
 
@@ -97,6 +98,7 @@ const SubCategories: FC<IProps> = () => {
 
   return (
     <>
+    <BreadCrumb/>
     <section>
       
       <div className="container">

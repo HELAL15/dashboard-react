@@ -2,10 +2,10 @@ import { FC, memo, useState } from "react";
 import { Modal, Table, TableColumnsType } from "antd";
 import { TableRowSelection } from "antd/es/table/interface";
 import { toast } from "react-toastify";
-import { FaFileExcel } from "react-icons/fa6";
 import useFetch from "../hooks/useFetch";
 import ActionButtons from "./ActionButtons";
 import { request } from "../api/request";
+import CustomButton from "./global/CustomButton";
 
 
 /**
@@ -23,7 +23,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [pageSize] = useState(10);
-  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}` );
+  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}&limit=3` );
 
 
   
@@ -120,22 +120,26 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
     }
   };
 
+
+  
+  
   const handleCancel = () => {
     setOpen(false);
   };
 
   return (
     <>
+          
     <div className="overflow-auto flex-grow  ">
         <div className="flex items-center justify-between mb-4">
           {hasSelected ? 
           <>
             <p>Selected {selectedRowKeys.length} items</p>
             <div className="actions flex items-center gap-2">
-              <button className="btn btn-primary">Delete selected</button>
-              <button className="btn btn-primary w-fit">
-                <FaFileExcel/>
-              </button>
+              <CustomButton>
+                Delete selected
+              </CustomButton>
+              
             </div>
           </>
            : null}

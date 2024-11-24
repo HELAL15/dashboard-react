@@ -3,6 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
+import BreadCrumb from "../../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -28,6 +29,7 @@ const CategoryDetails: FC<IProps> = ({  }) => {
 
   return (
     <>
+    <BreadCrumb/>
     <section>
       <div className="container">
         <Spin size="large" spinning={isLoading} >

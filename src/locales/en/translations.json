@@ -46,18 +46,54 @@
       "subtitle" : "save $3 with app new user only "
     }
   },
+  "aside" : {
+    "home" : "home",
+    "settings" : "settings",
+    "profile" : "profile",
+    "admins" : {
+      "index" : "admins",
+      "all" : "all admins",
+      "add" : "add admin"
+    },
+    "users" : {
+      "index" : "users",
+      "all" : "all users",
+      "add" : "add user"
+    },
+    "categories" : {
+      "index" : "categories",
+      "all" : "all categories",
+      "add" : "add category"
+    },
+    "sub-categories" : {
+      "index" : "sub categories",
+      "all" : "all sub categories",
+      "add" : "add sub categories"
+    },
+    "products" : {
+      "index" : "produts",
+      "all" : "all products",
+      "add" : "add product"
+    },
+    "faqs" : {
+      "index" : "FAQS",
+      "all" : " all FAQS",
+      "add" : "add faq"
+    } 
+  },
   "breadcrumb" : {
     "home" : "home",
     "shop" : "shop",
-    "about" : "about us",
-    "contact" : "contact us",
-    "profile" : "my profile",
-    "address" : "address",
-    "payment-option" : "payment options",
-    "returns" : "returns",
-    "cancellation" : "cancellation",
+    "settings" : "settings",
+    "users" : "users",
+    "add-user" : "add user",
+    "admins" : "admins",
+    "add-admin" : "add admin",
+    "categories" : "categories",
+    "add-category" : "add category",
+    "faqs": "FAQS",
+    "add-faq" : "add FAQ",
     "privacy" : "privacy",
-    "terms" : "terms",
-    "faq" : "FAQ"
+    "terms" : "terms"
   }
 }

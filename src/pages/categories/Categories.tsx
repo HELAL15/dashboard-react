@@ -1,12 +1,15 @@
 import { FC, memo } from "react";
 import { Link } from "react-router-dom";
 import { TableColumnsType } from "antd";
-import SecTitle from "../../components/global/SecTitle";
 import { useTranslation } from "react-i18next";
 import { MdCategory } from "react-icons/md";
 import TableLink from "../../components/TableLink";
 import TableImg from "../../components/TableImg";
 import CustomTable from "../../components/CustomTable";
+import BreadCrumb from "../../components/global/BreadCrumb";
+import CustomButton from "../../components/global/CustomButton";
+import { TiPlus } from "react-icons/ti";
+import ExportExcel from "../../components/global/ExportExcel";
 
 /**
  * ==> props interface
@@ -68,15 +71,18 @@ const Categories: FC<IProps> = () => {
 
   return (
     <>
+    <BreadCrumb/>
     <section>
       
       <div className="container">
 
-        <div className="flex items-center justify-between">
-          <SecTitle title="categories Page" subTitle="All categories in store" />
-          <Link to="/categories/add-category" className="btn btn-primary">
+        <div className="flex items-stretch gap-2 justify-end">
+          <Link to="/categories/add-category">
+            <CustomButton icon={<TiPlus className="!text-lg" />} >
             Add category
+            </CustomButton>
           </Link>
+          <ExportExcel/>
         </div>
         <CustomTable cols={columns} endPoint="categorys"  />
       </div>

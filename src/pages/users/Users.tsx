@@ -1,5 +1,6 @@
 import { FC, memo } from "react";
 import SecTitle from "../../components/global/SecTitle";
+import BreadCrumb from "../../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -14,6 +15,7 @@ interface IProps {
 const Users: FC<IProps> = ({  }) => {
   return (
     <>
+    <BreadCrumb/>
     <section>
       <div className="container">
         <SecTitle title="Users" />
