@@ -20,7 +20,7 @@ i18n
     },
     
     backend: {
-      loadPath: '/src/locales/{{lng}}/translations.json',
+      loadPath: '/locales/{{lng}}/translations.json',
     },
     detection: {
       order: [ 'cookie', 'localStorage', 'navigator', 'htmlTag', 'path', 'subdomain'],
