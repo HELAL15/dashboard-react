@@ -1,13 +1,12 @@
 import { FC, memo } from "react";
-import { Link, useLocation } from "react-router-dom";
-// import {  TableColumnsType } from "antd";
-import SecTitle from "../../components/global/SecTitle";
+import { Link, useParams } from "react-router-dom";
 import CustomTable from "../../components/CustomTable";
 import { useTranslation } from "react-i18next";
 import TableImg from "../../components/TableImg";
-import BreadCrumb from "../../components/global/BreadCrumb";
-
-// import useFetch from "../../hooks/useFetch";
+import CustomButton from "../../components/global/CustomButton";
+import { TiPlus } from "react-icons/ti";
+import ExportExcel from "../../components/global/ExportExcel";
+import TableLink from "../../components/TableLink";
 
 /**
  * ==> props interface
@@ -19,56 +18,13 @@ interface IProps {}
  */
 const SubCategories: FC<IProps> = () => {
 
-  // const {i18n} = useTranslation()
-  // const lang = i18n.language
-
-
-  // const location = useLocation();
-
-  
-  // const searchParams = new URLSearchParams(location.search);
-  // const parentId = searchParams.get('parent_id');
-
-  // const { data, isLoading, refetch } = useFetch(`categorys?parent_id=${parentId}` );
-
-  // console.log(data);
-  
-
-  
-  // const columns: TableColumnsType = [
-
-  //   {
-  //     title: "title",
-  //     dataIndex: `title`,
-  //     align: "center",
-  //     responsive: ["xs", "sm", "md", "lg"],
-  //   },
-
-  //   {
-  //     title: "image",
-  //     dataIndex: "image",
-  //     align: "center",
-  //     responsive: ["xs", "sm", "md", "lg"],
-  //   },
-
-  //   {
-  //     title: "sub categories",
-  //     dataIndex: `viewSubCategorys`,
-  //     align: "center",
-  //     responsive: ["xs", "sm", "md", "lg"],
-  //   },
-    
-
-  // ];
 
   const {i18n} = useTranslation()
   const lang = i18n.language
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const parentId = searchParams.get('parent_id');
-  const endPoint = `categorys?parent_id=${parentId}`
-  console.log(endPoint);
+  const {id} = useParams()
+  const endPoint = `categorys?parent_id=${id}`
+  const delEndPoint = `categorys`
 
   const cols = [
     {
@@ -93,24 +49,35 @@ const SubCategories: FC<IProps> = () => {
         <TableImg image={image} /> 
       ) ,
     },
+    {
+      title: "sizes",
+      dataIndex: "css",
+      align: "center",
+      responsive: ["xs", "sm", "md", "lg"],
+      render: ()=>(
+        <TableLink title="dd" path="/ff" /> 
+      ) ,
+    },
   ]
   
 
   return (
     <>
-    <BreadCrumb/>
     <section>
       
       <div className="container">
-        <div className="flex items-center justify-between">
-          <SecTitle title="categories Page" subTitle="All categories in store" />
-          <Link to="/categories/add-category" className="btn btn-primary">
-            Add category
+        <div className="flex items-stretch gap-2 justify-end">
+          <Link to="/categories/add-sub-category">
+            <CustomButton icon={<TiPlus className="!text-lg" />} >
+              Add category
+            </CustomButton>
           </Link>
+          <ExportExcel/>
         </div>
         <CustomTable
           endPoint={endPoint}
           cols={cols}
+          delEndPoint={delEndPoint}
           />
       </div>
     </section>

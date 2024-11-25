@@ -14,17 +14,20 @@ import CustomButton from "./global/CustomButton";
 interface IProps {
   cols?:any,
   endPoint?:string
+  delEndPoint?:string
 }
 
 /**
  * ==> Component
  */
-const CustomTable: FC<IProps> = ({cols , endPoint }) => {
+const CustomTable: FC<IProps> = ({cols , endPoint , delEndPoint }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageSize] = useState(10);
-  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}` );
+  const [pageSize,setPageSize] = useState(10);
+  const { data, isLoading, refetch } = useFetch(`${endPoint}?page=${currentPage}&per_page=${pageSize}` );
 
+  console.log(data);
+  
 
   
   const columns: TableColumnsType = [
@@ -77,12 +80,15 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
   const hasSelected = selectedRowKeys.length > 0;
 
 
-    // Pagination handler
-    const handlePaginationChange = (page: number) => {
-      setCurrentPage(page);
-      refetch(); 
-      window.scrollTo({top:0, left:0 , behavior:"smooth"})
-    };
+
+
+  const handlePaginationChange = (page: number, size?: number) => {
+    setCurrentPage(page); 
+    if (size && size !== pageSize) {
+      setPageSize(size); 
+    }
+    refetch();
+  };
 
 
 
@@ -95,7 +101,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
   const showModal = (id:any) => {
     setOpen(true);
     setId(id)
-    setModalText('are you sure you want to delete this category?')
+    setModalText('are you sure you want to delete this item?')
   };
 
 
@@ -103,7 +109,7 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
   const handleOk = async () => {
     setConfirmLoading(true);
     try{
-      const res = await request.delete(`/admin/${endPoint}/${id}`)
+      const res = await request.delete(`/admin/${delEndPoint ? `${delEndPoint}/${id}` : `${endPoint}/${id}`}`)
       console.log(res);
       toast.success(res.data.message)
       refetch()
@@ -155,11 +161,20 @@ const CustomTable: FC<IProps> = ({cols , endPoint }) => {
           columns={columns}
           pagination={{
             current: currentPage,
+            showSizeChanger: true,
+            pageSizeOptions: ["10", "20", "30", "50"],
             pageSize,
             total: data?.data?.meta?.total,
             onChange: handlePaginationChange,
+            onShowSizeChange: handlePaginationChange,
+            position: ["bottomRight", "bottomCenter"],
+            showTotal: (total, range) =>
+               
+              <span className="text-primary-white">{ `Page ${currentPage} of ${Math.ceil(total / 10)} (${range[0]}-${range[1]} of ${total})`}</span>
+             , 
+          
           }}
-          scroll={{ x: 'max-content' }}
+          scroll={{ x: 'max-content'  }}
            />
            <Modal
            centered

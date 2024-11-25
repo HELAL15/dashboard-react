@@ -37,7 +37,6 @@ const ProtectedRoutes: FC<IProps> = ({  }) => {
   useEffect(() => {
     const checkTokenValidity = () => {
       const isMyTokenExpired = isTokenExpired(token);
-      console.log("checked validity");
       
       if (token && isMyTokenExpired) {
         persistor.purge()

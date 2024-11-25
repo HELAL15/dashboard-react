@@ -69,6 +69,9 @@ section {
 .input {
   @apply w-full bg-body px-4 py-3 rounded outline-none border border-transparent focus:border-accent;
 }
+.input:disabled {
+  @apply bg-accent/20 cursor-not-allowed;
+}
 .ant-checkbox-indeterminate .ant-checkbox-inner:after {
   @apply bg-accent !important;
 }
@@ -82,7 +85,7 @@ section {
 }
 
 .btn {
-  @apply py-3 px-4 md:px-9 rounded my-1 capitalize font-medium text-base duration-300;
+  @apply py-3 px-4 md:px-9 rounded capitalize font-normal md:font-medium text-sm md:text-base duration-300;
 }
 
 .btn-primary {
@@ -232,6 +235,22 @@ section {
 .ant-table-wrapper .ant-table-tbody > tr > td {
   @apply bg-body-secondary text-primary-white !important;
 }
+html:not(.dark) {
+  .ant-table-wrapper
+    .ant-table-tbody
+    .ant-table-row.ant-table-row-selected
+    > .ant-table-cell {
+    @apply bg-accent/15 !important;
+  }
+}
+html.dark {
+  .ant-table-wrapper
+    .ant-table-tbody
+    .ant-table-row.ant-table-row-selected
+    > .ant-table-cell {
+    @apply bg-zinc-800/90 !important;
+  }
+}
 .ant-tabs-nav {
   @apply max-w-[300px] md:max-w-[500px] lg:max-w-[700px] xl:max-w-[800px] !important;
 }
@@ -337,4 +356,29 @@ section {
 
 .ant-breadcrumb-separator {
   @apply text-primary-white !important;
+}
+
+.ant-select-outlined:not(.ant-select-customize-input) .ant-select-selector {
+  @apply border-primary-white;
+  background: transparent;
+}
+
+.ant-select-focused.ant-select-outlined:not(.ant-select-disabled):not(
+    .ant-select-customize-input
+  ):not(.ant-pagination-size-changer)
+  .ant-select-selector,
+.ant-select-outlined:not(.ant-select-disabled):not(
+    .ant-select-customize-input
+  ):not(.ant-pagination-size-changer):hover
+  .ant-select-selector {
+  @apply border-accent;
+}
+
+@media only screen and (max-width: 576px) {
+  .ant-pagination-total-text {
+    width: 100%;
+  }
+  .ant-pagination .ant-pagination-options {
+    display: block;
+  }
 }

@@ -6,6 +6,7 @@ import type { MenuProps } from 'antd';
 import { TiPlus } from "react-icons/ti";
 import { BiSolidCategory } from "react-icons/bi";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
+import { PiFlagBannerFoldFill } from "react-icons/pi";
 import { useMediaQuery } from 'react-responsive';
 import { FaHome, FaUsersCog } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
@@ -43,6 +44,18 @@ const Aside: FC<IProps> = ({ collapsed, setClose , toggleClose , close }) => {
   const items: MenuItem[] = [
     { key: '/', icon: <FaHome className="!text-lg" /> , label: <NavLink className={'text-sm font-normal'} to="/">{t('aside.home')}</NavLink> },
     { key: '/settings', icon: <IoMdSettings className="!text-lg" /> , label: <NavLink className={'text-sm font-normal'} to="/settings">{t('aside.settings')}</NavLink> },
+    {
+      key: 'sub0',
+      label: <span className="text-base font-normal" >{t("aside.banners.index")}</span>,
+      icon: <PiFlagBannerFoldFill className="!text-lg" />
+      ,
+      children: [
+        { key: '/banners', icon:<PiFlagBannerFoldFill className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/banners">{t("aside.banners.all")}</NavLink> },
+        { key: '/banners/add-banner', icon: <TiPlus className="!text-lg" /> , 
+          label: <NavLink className={'text-sm font-normal'} to="/banners/add-banner">{t("aside.banners.add")}</NavLink> },
+      ],
+    },
     {
       key: 'sub1',
       label: <span className="text-base font-normal" >{t("aside.admins.index")}</span>,

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import CustomTable from "../../components/CustomTable";
 import { useTranslation } from "react-i18next";
 import { TableColumnsType } from "antd";
-import BreadCrumb from "../../components/global/BreadCrumb";
 import CustomButton from "../../components/global/CustomButton";
 import { TiPlus } from "react-icons/ti";
 
@@ -44,7 +43,6 @@ const Faqs: FC<IProps> = () => {
  
   return (
     <>
-      <BreadCrumb/>
       <section>
         <div className="container">
           <div className="flex items-center justify-end">

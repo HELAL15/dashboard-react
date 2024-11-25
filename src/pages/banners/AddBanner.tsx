@@ -1,4 +1,4 @@
-import { FC, memo, useState } from "react";
+import { memo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
@@ -11,10 +11,13 @@ import { TiPlus } from "react-icons/ti";
 interface IFormInput {
   title_en: string;
   title_ar: string;
-  category_image: FileList;
+  banner_image: FileList;
 }
 
-const AddCategory: FC = () => {
+/**
+ * ==> Component
+ */
+const AddBanner = () => {
   const { t } = useTranslation();
   const { register, handleSubmit, formState: { errors }, setValue , reset } = useForm<IFormInput>();
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -24,7 +27,7 @@ const AddCategory: FC = () => {
   const handleImageChange = (event:any) => {
     const file = event.target.files?.[0];
     if (file) {
-      setValue("category_image", event.target.files); 
+      setValue("banner_image", event.target.files); 
       setImagePreview(URL.createObjectURL(file)); 
     }
   };
@@ -39,18 +42,18 @@ const navigate = useNavigate()
       formData.append("title_ar", data.title_ar);
 
      
-      if (data.category_image?.length) {
-        formData.append("category_image", data.category_image[0]); 
+      if (data.banner_image?.length) {
+        formData.append("banner_image", data.banner_image[0]); 
       }
 
       setIsLoading(true)
-      const res = await request.post('admin/categorys', formData, {
+      const res = await request.post('admin/banners', formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         }
       });
       setIsLoading(false)
-      navigate('/categories')
+      navigate('/banners')
       reset()
       // Log response and show success message
       console.log(res);
@@ -62,12 +65,11 @@ const navigate = useNavigate()
       toast.error(err.response.data.message);
     }
   };
-
   return (
     <>
       <section>
         <div className="container">
-          <Spin spinning={isLoading} size="large" className="add-category-form">
+        <Spin spinning={isLoading} size="large" className="add-category-form">
             <form onSubmit={handleSubmit(onSubmit)} className="wrapper">
               <div className="grid md:grid-cols-2 gap-4">
                 {/* English Title */}
@@ -90,7 +92,7 @@ const navigate = useNavigate()
                     id="title_ar"
                     type="text"
                     className="input"
-                    placeholder={t("title_ar_placeholder")}
+                    placeholder={t("title ar placeholder")}
                     {...register("title_ar", { required: t("title_required") })}
                   />
                   {errors.title_ar && <p className="error">{errors.title_ar.message}</p>}
@@ -98,13 +100,12 @@ const navigate = useNavigate()
 
                 {/* Image Upload */}
                 <div className="package col-span-2">
-                  <label className="label req" htmlFor="category_image">{t("category image")}</label>
+                  <label className="label req" htmlFor="banner_image">{t("banner image")}</label>
                   <input 
                     className="input" 
                     type="file" 
-                    id="category_image" 
+                    id="banner_image" 
                     onChange={handleImageChange}
-                    // {...register("category_image", { required: t("title_required") })}
                   />
                   {imagePreview && (
                     <div className="mt-4 w-[200px] ">
@@ -117,7 +118,7 @@ const navigate = useNavigate()
                 loading={isLoading}
                 type="submit"
                 icon={<TiPlus className="!text-lg" />} >
-                add category
+                add banner
                 </CustomButton>
               </div>
             </form>
@@ -126,6 +127,6 @@ const navigate = useNavigate()
       </section>
     </>
   );
-};
+}
 
-export default memo(AddCategory);
+export default memo(AddBanner);

@@ -50,6 +50,11 @@
     "home" : "home",
     "settings" : "settings",
     "profile" : "profile",
+    "banners" : {
+      "index" : "banners",
+      "all" : "all banners",
+      "add" : "add banner"
+    },
     "admins" : {
       "index" : "admins",
       "all" : "all admins",

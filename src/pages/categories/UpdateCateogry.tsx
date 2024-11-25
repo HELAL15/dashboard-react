@@ -6,7 +6,6 @@ import { request } from "../../api/request";
 import { useNavigate, useParams } from "react-router";
 import useFetch from "../../hooks/useFetch";
 import { toast } from "react-toastify";
-import BreadCrumb from "../../components/global/BreadCrumb";
 import CustomButton from "../../components/global/CustomButton";
 
 interface IFormInput {
@@ -82,7 +81,6 @@ const UpdateCateogry: FC = () => {
 
   return (
     <>
-      <BreadCrumb/>
       <section>
         <div className="container">
           <Spin spinning={isLoading ? isLoading : load} size="large" className="add-category-form">

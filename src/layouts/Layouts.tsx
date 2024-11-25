@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router";
 import Aside from "./Aside";
+import BreadCrumb from "../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -43,6 +44,7 @@ const Layouts: FC<IProps> = ({  }) => {
       <div className="flex-grow overflow-x-auto relative">
         <Header  collapsed={collapsed} toggleCollapsed={toggleCollapsed}  toggleClose={toggleClose} />
         <main>
+          <BreadCrumb/>
           <Outlet/>
         </main>
         <Footer/>

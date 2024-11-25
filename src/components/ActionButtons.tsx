@@ -28,13 +28,13 @@ const ActionButtons: FC<IProps> = ({ id , showModal }) => {
 
         </div>
         <Tooltip title="update" placement="bottom" color="rgb(250 204 21)" >
-          <Link to={`edit/${id}`} className=" py-3">
+          <Link to={`${id}/update`} className=" py-3">
             {/* <IoPencil className="text-primary duration-300 hover:text-accent text-xl" /> */}
             <FaEdit className="text-primary duration-300 hover:text-yellow-400 text-xl"  />
           </Link>
         </Tooltip>
         <Tooltip title="view all details" placement="bottom" color="rgb(96 165 250)" >
-          <Link to={`view/${id}`} className=" py-3  ">
+          <Link to={`${id}`} className=" py-3  ">
             <IoEye className="text-primary duration-300 hover:text-blue-400 text-xl" />
           </Link>
         </Tooltip>

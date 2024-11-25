@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { request } from "../../api/request";
 import { useNavigate } from "react-router";
 import { Spin } from "antd";
-import BreadCrumb from "../../components/global/BreadCrumb";
 import CustomButton from "../../components/global/CustomButton";
 import { TiPlus } from "react-icons/ti";
 
@@ -69,7 +68,6 @@ const AddFaqs: FC<IProps> = ({  }) => {
 
   return (
     <>
-    <BreadCrumb/>
     <section>
       <div className="container">
           <Spin spinning={loading} size="large" >

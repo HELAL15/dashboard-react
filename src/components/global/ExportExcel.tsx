@@ -18,7 +18,7 @@ interface IProps {
 /**
  * ==> Component
  */
-const ExportExcel: FC<IProps> = ({ endPoint='categorys' }) => {
+const ExportExcel: FC<IProps> = ({ endPoint='faqs' }) => {
 
   const [exportLoading , setExportLoading] = useState(false)
   const exportToExcel = async () => {

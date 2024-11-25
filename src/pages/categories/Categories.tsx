@@ -6,7 +6,6 @@ import { MdCategory } from "react-icons/md";
 import TableLink from "../../components/TableLink";
 import TableImg from "../../components/TableImg";
 import CustomTable from "../../components/CustomTable";
-import BreadCrumb from "../../components/global/BreadCrumb";
 import CustomButton from "../../components/global/CustomButton";
 import { TiPlus } from "react-icons/ti";
 import ExportExcel from "../../components/global/ExportExcel";
@@ -53,7 +52,7 @@ const Categories: FC<IProps> = () => {
        <TableLink 
         icon={<MdCategory />} 
         title="view sub category" 
-        path={`/sub-categories?parent_id=${id}`} 
+        path={`/categories/${id}/sub-categories`} 
         />
     },
 
@@ -64,14 +63,8 @@ const Categories: FC<IProps> = () => {
 
 
 
-
-
-
-
-
   return (
     <>
-    <BreadCrumb/>
     <section>
       
       <div className="container">

@@ -6,7 +6,6 @@ import { request } from "../../api/request";
 import { useNavigate, useParams } from "react-router";
 import { Spin } from "antd";
 import useFetch from "../../hooks/useFetch";
-import BreadCrumb from "../../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -77,7 +76,6 @@ useEffect(() => {
 
   return (
     <>
-    <BreadCrumb/>
     <section>
       <div className="container">
         <SecTitle title="add FAQ page" />

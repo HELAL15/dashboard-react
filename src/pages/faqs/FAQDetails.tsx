@@ -5,7 +5,6 @@ import { useTranslation } from "react-i18next";
 import { Spin } from "antd";
 import SecTitle from "../../components/global/SecTitle";
 import FaqCard from "../../components/FaqCard";
-import BreadCrumb from "../../components/global/BreadCrumb";
 
 /**
  * ==> props interface
@@ -33,7 +32,6 @@ const FAQDetails: FC<IProps> = ({  }) => {
 
   return (
     <>
-    <BreadCrumb/>
     <section>
       <div className="container">
         <SecTitle title="view faq details" />

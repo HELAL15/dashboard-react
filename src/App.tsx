@@ -25,6 +25,12 @@ import Users from "./pages/users/Users";
 import AddUser from "./pages/users/AddUser";
 import Admins from "./pages/admins/Admins";
 import AddAdmin from "./pages/admins/AddAdmin";
+import AddSubCategories from "./pages/subCategories/AddSubCategories";
+import SubCategoryDetails from "./pages/subCategories/SubCategoryDetails";
+import Banners from "./pages/banners/Banners";
+import AddBanner from "./pages/banners/AddBanner";
+import BannerDetails from "./pages/banners/BannerDetails";
+import UpdateBanner from "./pages/banners/UpdateBanner";
 
 
 
@@ -58,35 +64,42 @@ function App() {
           {/* settings page */}
           <Route path="/settings" element={<Settings/>}/>
 
+          {/* banners page  */}
+          <Route path="/banners" element={<Banners/>} />
+          <Route path="/banners/:id" element={<BannerDetails/>} />
+          <Route path="/banners/add-banner" element={<AddBanner/>}/>
+          <Route path="/banners/:id/update" element={<UpdateBanner/>}/>
+
           {/* users page  */}
           <Route path="/users" element={<Users/>} />
-          <Route path="/users/view/:id" element={<CategoryDetails/>} />
+          <Route path="/users/:id" element={<CategoryDetails/>} />
           <Route path="/users/add-user" element={<AddUser/>}/>
-          <Route path="/users/edit/:id" element={<UpdateCateogry/>}/>
+          <Route path="/users/:id/update" element={<UpdateCateogry/>}/>
 
           {/* admins page  */}
           <Route path="/admins" element={<Admins/>} />
-          <Route path="/admins/view/:id" element={<CategoryDetails/>} />
+          <Route path="/admins/:id" element={<CategoryDetails/>} />
           <Route path="/admins/add-admin" element={<AddAdmin/>}/>
-          <Route path="/admins/edit/:id" element={<UpdateCateogry/>}/>
+          <Route path="/admins/:id/update" element={<UpdateCateogry/>}/>
 
           {/* categories page  */}
           <Route path="/categories" element={<Categories/>} />
-          <Route path="/categories/view/:id" element={<CategoryDetails/>} />
+          <Route path="/categories/:id" element={<CategoryDetails/>} />
+          <Route path="/categories/:id/update" element={<UpdateCateogry/>}/>
           <Route path="/categories/add-category" element={<AddCategory/>}/>
-          <Route path="/categories/edit/:id" element={<UpdateCateogry/>}/>
 
           {/* sub categories page */}
-          <Route path="/sub-categories" element={<SubCategories/>} />
-          <Route path="/sub-categories/view/:id" element={<p>view sub</p>} />
-          <Route path="/sub-categories/add-sub-category" element={<p>add sub</p>} />
-          <Route path="/sub-categories/edit/:id" element={<p>update sub</p>} />
-          
+          <Route path="/categories/:id/sub-categories" element={<SubCategories/>} />
+          <Route path="/categories/:id/sub-categories/:id" element={<SubCategoryDetails/>} />
+          <Route path="/categories/add-sub-category" element={<AddSubCategories/>} />
+          <Route path="/categories/:id/sub-categories/:id/update" element={<p>update sub</p>} />
+
+
           {/* faqs page */}
           <Route path="/faqs" element={<Faqs/>} />
           <Route path="faqs/add-faq" element={<AddFaqs/>}/>
-          <Route path="faqs/view/:id" element={<FAQDetails/>}/>
-          <Route path="faqs/edit/:id" element={<UpdateFaq/>}/>
+          <Route path="faqs/:id" element={<FAQDetails/>}/>
+          <Route path="faqs/:id/update" element={<UpdateFaq/>}/>
       
         </Route>
       
